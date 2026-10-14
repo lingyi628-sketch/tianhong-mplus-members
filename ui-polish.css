@@ -1,0 +1,65 @@
+/* Shared finish: original Figma palette, approved page structure. */
+#mp-compact{--mp-ink:#47466a;--mp-muted:#85849a;--mp-line:#e9e8f2;--mp-purple:#8683c4;--mp-radius:10px;--mp-gap:12px}
+#mp-compact .phone{padding:16px 14px;background:linear-gradient(145deg,#3c3d62 0,#1b1b29 330px);font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif}
+#mp-compact .section{padding:16px 14px;border-radius:var(--mp-radius);margin-top:var(--mp-gap);box-shadow:0 2px 8px #09091b0d}
+#mp-compact #mp-home>.section>h3{font-size:17px;line-height:1.4;font-weight:600;letter-spacing:.2px;color:var(--mp-ink);border-color:var(--mp-line);padding-bottom:11px;margin-bottom:13px}
+#mp-compact .label{font-size:13px;font-weight:500;color:#767387;margin:14px 0 9px;line-height:1.4}
+#mp-compact .two,#mp-compact .activities{gap:8px}
+#mp-compact .gift{border-color:#e9e6f7;background:linear-gradient(145deg,#e6e2f7,#fdfcff 90%);border-radius:var(--mp-radius);padding:11px 8px}
+#mp-compact .gift .small{font-size:12px;color:#666275}
+#mp-compact .gift .amount{font-size:21px;line-height:1.4;font-weight:600;letter-spacing:-.3px;color:#e64445;margin:4px 0 2px}
+#mp-compact .gift-art{height:43px;width:56px;margin-bottom:8px}
+#mp-compact .gift button{font-size:11px;padding:6px 12px;background:linear-gradient(120deg,#807cbb,#9895da);box-shadow:0 2px 4px #7975b31c}
+#mp-compact .activity-carousel{margin-bottom:12px}
+#mp-compact .activity-carousel #mp-stable-banner{border-radius:var(--mp-radius);height:86px}
+#mp-compact .activity{border-radius:8px;padding:9px 4px 10px;font-weight:500;font-size:12px}
+#mp-compact .art{height:55px;margin-bottom:6px}
+#mp-compact .activity-art{width:74px;height:55px}
+#mp-compact .reward{font-size:9px;font-weight:400;line-height:1.45;padding:5px 2px;min-height:23px;margin-top:7px}
+#mp-compact .activities.more{margin-top:8px}
+#mp-compact .activities.more .activity{padding:11px 3px;background:linear-gradient(135deg,#e9edff,#f4f6ff);color:#6676b2}
+#mp-compact .activity>.small{font-size:9px;line-height:1.5;margin-top:5px;color:#8291c5}
+#mp-compact .monthly-switch{border-radius:9px;background:#f1f0f7;padding:3px}
+#mp-compact .monthly-switch button{font-size:13px;line-height:1.4;padding:10px 4px;box-shadow:none;min-height:38px;color:#9692a9}
+#mp-compact .monthly-switch button[aria-selected=true]{color:#fff;background:linear-gradient(115deg,#7e7bb8,#9895d5);box-shadow:0 2px 4px #817bb51a}
+#mp-compact .allocation-intro{font-size:11px;line-height:1.5;color:var(--mp-muted);margin:12px 0 9px}
+#mp-compact .allocation-asset{padding:13px 12px 11px;margin-top:10px;border-radius:9px;box-shadow:none;border:1px solid #e4e8f7;background:linear-gradient(120deg,#eef1fc,#f9faff)}
+#mp-compact .allocation-label{display:flex;align-items:center;gap:7px;font-size:15px;line-height:1.4;font-weight:600;color:#636b9c;letter-spacing:.2px}
+#mp-compact .allocation-label::before{content:'';width:3px;height:13px;border-radius:3px;background:#919ad4}
+#mp-compact .allocation-asset>p{font-size:11px;line-height:1.8;color:#777b90;margin:8px 0 10px;padding:0;border:0}
+#mp-compact .allocation-fund{border:0;border-radius:7px;box-shadow:none;padding:10px;background:#ffffffbf;font-size:12px;line-height:1.55;color:#555464;gap:8px}
+#mp-compact .allocation-fund small{font-size:9px;color:#949bbd;margin-top:4px;letter-spacing:.2px}
+#mp-compact .allocation-fund>span:last-child{font-size:10px;background:#e9edfb;color:#7b83b4;border-radius:12px;padding:5px 8px}
+#mp-compact .asset-dividend{background:linear-gradient(120deg,#fff0e4,#fffaf5);border-color:#f4e5d6}
+#mp-compact .asset-dividend .allocation-label{color:#a5794b}
+#mp-compact .asset-dividend .allocation-label::before{background:#d1a779}
+#mp-compact .asset-dividend>p{color:#988a7b}
+#mp-compact .asset-dividend .allocation-fund{border:0;background:#ffffffbf}
+#mp-compact .asset-dividend .allocation-fund>span:last-child{background:#faeddf;color:#b0936c}
+#mp-compact .asset-cloud{background:linear-gradient(120deg,#eeebfc,#faf9ff);border-color:#e6e0f6}
+#mp-compact .asset-cloud .allocation-label{color:#8a78ac}
+#mp-compact .asset-cloud .allocation-label::before{background:#af9dcd}
+#mp-compact .asset-metal{background:linear-gradient(120deg,#eaf3f7,#f8fcff);border-color:#dce9ef}
+#mp-compact .asset-metal .allocation-label{color:#6d8e9d}
+#mp-compact .asset-metal .allocation-label::before{background:#92b1bf}
+#mp-compact .ranking-banner{margin-top:12px;min-height:61px;border-radius:8px;background:linear-gradient(110deg,#e9e0f7,#e9efff);padding:11px 13px}
+#mp-compact .ranking-banner strong{font-size:13px;color:#7773a6}
+#mp-compact .ranking-banner small{font-size:9px;margin-top:3px;color:#9995b2}
+#mp-compact .monthly-source{font-size:9px;color:#a29eab;line-height:1.6;margin-top:10px}
+#mp-compact .report{border-radius:8px;background:#f1f4fc}
+#mp-compact .preview{height:66px;background:linear-gradient(120deg,#e1e5ff,#ddd6ff)}
+#mp-compact .report-caption{padding:10px 4px;font-size:11px;color:#737182}
+#mp-compact .tabs{gap:5px;margin:10px 0 3px}
+#mp-compact .tabs button{font-size:12px;min-height:35px;background:#eef0fb;color:#9097b5;padding:8px 4px}
+#mp-compact .tabs button[aria-selected=true]{background:linear-gradient(115deg,#807cbd,#9592d5);color:#fff}
+#mp-compact .entry{font-size:12px;color:#686574;border-color:#efedf4;padding:13px 0}
+#mp-compact .entry:last-child{border-bottom:0;padding-bottom:5px}
+#mp-compact .footer{font-size:10px;line-height:1.8;padding:12px 3px;color:#9793a5}
+#mp-compact .footer summary{font-size:10px;color:#b0a3cb}
+button:active{filter:brightness(.97)}
+#mp-compact .product-description strong{display:block;font-size:11px;font-weight:500;color:#626b9b;margin-bottom:5px}
+#mp-compact .product-description span{display:block;font-size:10px;line-height:1.75}
+#mp-compact .asset-dividend .product-description strong{color:#aa7c50}
+#mp-compact .asset-cloud .product-description strong{color:#8a78ac}
+#mp-compact .asset-metal .product-description strong{color:#6d8e9d}
+@media(max-width:350px){#mp-compact .section{padding:14px 11px}#mp-compact .allocation-fund{font-size:11px;padding:9px 8px}#mp-compact .reward{font-size:8.5px}#mp-compact .gift button{padding:6px 10px}#mp-compact .activity>.small{font-size:8.5px}}

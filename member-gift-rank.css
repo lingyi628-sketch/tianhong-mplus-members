@@ -1,0 +1,91 @@
+/* Match the visible artwork, rather than the differently padded PNG canvases. */
+.gift-art,
+.private-gifts .gift-art,
+.mass-gifts .gift-art {
+  width: 38px !important;
+  height: 38px !important;
+  object-fit: contain;
+  transform-origin: center;
+  align-self: center;
+}
+.gift-art[src$="img3D1.png"] { transform: translate(-.44px, -.96px) scale(1.097); }
+.gift-art[src$="img1.png"] { transform: scale(.632); }
+.gift-art[src$="img251.png"] { transform: translate(.76px, .2px) scale(.998); }
+
+/* A small edge label keeps the award title and all three card baselines aligned. */
+.award-gift { overflow: visible; }
+.gift-exclusive-badge {
+  position: absolute;
+  z-index: 1;
+  right: 5px;
+  top: -8px;
+  padding: 0 6px;
+  border: 2px solid #fff;
+  border-radius: 8px 8px 3px 8px;
+  background: #b29461;
+  color: #fff;
+  font: 500 8px/12px "PingFang SC", "Microsoft YaHei", sans-serif;
+  letter-spacing: .2px;
+  white-space: nowrap;
+}
+
+/* Slim medal ribbons: a clean silhouette with restrained metallic detailing. */
+.rank-medal {
+  --rank-top: #f6e7bb;
+  --rank-bottom: #d8b469;
+  --rank-ink: #8c6829;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
+  height: 29px;
+  padding: 0 0 4px;
+  border: 0 !important;
+  border-radius: 3px 3px 0 0;
+  clip-path: polygon(0 0, 100% 0, 100% 76%, 50% 100%, 0 76%);
+  background: linear-gradient(120deg, var(--rank-top), var(--rank-bottom)) !important;
+  color: var(--rank-ink) !important;
+  box-shadow: none !important;
+  font: 600 18px/1 Georgia, "Times New Roman", serif;
+  text-shadow: 0 1px 0 #ffffff80;
+}
+.rank-medal::before {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  top: 3px;
+  width: auto;
+  height: 1px;
+  border-radius: 0;
+  clip-path: none;
+  background: #fff;
+  opacity: .62;
+}
+.rank-medal::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: 7px;
+  height: 1px;
+  background: var(--rank-ink);
+  opacity: .16;
+}
+.medal-1 {
+  --rank-top: #edf1f6;
+  --rank-bottom: #cbd5e1;
+  --rank-ink: #697c95;
+}
+.medal-2 {
+  --rank-top: #f4e5d7;
+  --rank-bottom: #d9b391;
+  --rank-ink: #976d4c;
+}
+@media (max-width: 350px) {
+  .rank-medal { width: 20px; height: 26px; font-size: 16px; }
+  .gift-exclusive-badge { right: 2px; padding: 0 4px; font-size: 7px; }
+}

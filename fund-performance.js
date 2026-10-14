@@ -1,0 +1,1 @@
+window.fundPerformance={"source": "天天基金 TTFUND_BASE_INFOS / SYL_1N", "queriedOn": "2026-10-13", "funds": {"017025": {"name": "天弘通享债券发起C", "oneYearReturn": 2.4, "asOf": "2026-10-13"}, "021562": {"name": "天弘中证央企红利50指数发起C", "oneYearReturn": 9.31, "asOf": "2026-10-13"}, "019170": {"name": "天弘沪港深云计算ETF联接C", "oneYearReturn": -1.24, "asOf": "2026-10-13"}}};

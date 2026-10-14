@@ -1,0 +1,29 @@
+/* Horizontally browsable destination cards, following the supplied reference. */
+.zones{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;margin:15px -4px 0;padding:0 4px 5px;touch-action:pan-x pan-y;cursor:grab}
+.zones::-webkit-scrollbar{display:none}
+.zones:active{cursor:grabbing}
+.zones>.zone-card{position:relative;isolation:isolate;flex:0 0 46%;height:184px;min-width:138px;display:block;padding:0;border:0!important;border-radius:10px;overflow:hidden;scroll-snap-align:start;text-align:left;background:linear-gradient(150deg,#e9e1d2 0%,#c8d9f6 48%,#465f7f 100%);box-shadow:0 3px 7px #30416716;color:white;user-select:none}
+.zones>.zone-dividend{background:linear-gradient(150deg,#f6ddcf 0%,#e3b5a5 48%,#785950 100%)}
+.zones>.zone-ai{background:linear-gradient(150deg,#dce3ff 0%,#a6bbeb 48%,#444376 100%)}
+.zone-card:after{content:'';position:absolute;inset:42% 0 0;z-index:-1;background:linear-gradient(transparent,#24304070)}
+.zone-card-tag{position:absolute;left:12px;top:12px;font-size:10px;line-height:15px;color:#364564}
+.zone-dividend .zone-card-tag{color:#7c5246}
+.zone-card-art{position:absolute;top:26px;right:1px;width:119px;height:79px;display:flex;align-items:center;justify-content:center;z-index:-2}
+.zone-card-art img{width:100%;height:100%;object-fit:contain;pointer-events:none;filter:drop-shadow(0 5px 7px #4c568522)}
+.zone-ai .zone-card-art{right:6px;width:103px}
+.zone-card-copy{position:absolute;left:12px;right:8px;bottom:13px;display:flex;flex-direction:column;align-items:flex-start}
+.zones .zone-card strong{font-size:18px;line-height:25px;font-weight:600;color:white;letter-spacing:.4px;white-space:nowrap}
+.zone-card-reward{display:block;margin-top:3px;color:#fffdf4;font-size:10px;line-height:16px;white-space:nowrap}
+.zone-card-action{display:inline-flex;gap:9px;align-items:center;background:white;color:#3d414a;border-radius:20px;font-size:11px;font-weight:500;line-height:23px;height:23px;padding:0 10px;margin-top:10px}
+.zone-card-action>span{font:20px/1 Arial,sans-serif;margin-top:-2px}
+.zones>.zone-card:focus-visible{outline:2px solid var(--accent-dark);outline-offset:2px}
+.tier-table small{display:block;color:#a5a2ba;font-size:8px;line-height:1.5;margin-top:2px}
+.tier-table-section .tier-table td[colspan]{line-height:1.85}
+.tier-table-section h2{position:sticky;top:0;z-index:2;background:#252534}
+@media(max-width:350px){.zones>.zone-card{min-width:130px;height:177px}.zone-card-art{width:109px;height:72px}.zones .zone-card strong{font-size:17px}.zone-card-copy{left:10px}.zone-card-tag{left:10px}}
+/* Keep the original tier artwork proportional on narrow phones. */
+.hero{width:100%;height:auto!important}
+.hero .figma-header-logo{left:4.06%;top:19.09%;width:24.06%;height:18.18%}
+.hero .figma-header-subtitle{left:4.06%;top:43.64%}
+.hero .figma-header-caption{left:4.06%;top:75.45%}
+@media(max-width:350px){.hero .figma-header-subtitle,.hero .figma-header-caption{font-size:10px;line-height:12px}}

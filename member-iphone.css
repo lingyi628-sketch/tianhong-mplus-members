@@ -1,0 +1,128 @@
+/* Readable at iPhone CSS-pixel dimensions; supporting text starts at 12px. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-size:15px}
+.phone{max-width:430px}
+.member-preview{max-width:430px;gap:10px;padding:12px 8px;font-size:15px}
+.member-preview a{display:flex;align-items:center;justify-content:center;min-width:66px;min-height:40px;padding:7px 12px}
+.section h2,.products>.section-row h2{font-size:20px}
+.subhead{font-size:16px;line-height:24px}
+.hero .figma-header-subtitle,.hero .figma-header-caption{font-size:12px;line-height:15px}
+.gifts{gap:8px}
+.gift,.private-gifts .gift{height:136px;grid-template-rows:20px 20px 38px 30px;gap:2px;padding:9px 3px}
+.gift-title,.private-gifts .gift-title{font-size:13px;line-height:20px;white-space:nowrap}
+.gift-amount,.gift-amount strong{font-size:16px;line-height:20px}
+.gift button,.private-gifts .gift button,.mass-gifts .gift button{height:30px!important;line-height:30px;padding:0 10px;font-size:12px;border-radius:16px}
+.award-gift button{background:var(--accent);color:white}
+.gift-exclusive-badge{font-size:12px;line-height:16px;background:var(--accent-dark);top:-12px;right:2px;padding:0 4px;letter-spacing:0}
+.mass-gifts .gift{height:76px;grid-template-columns:38px minmax(0,1fr) 80px;grid-template-rows:22px 22px;padding:12px;gap:2px 10px}
+.mass-gifts .gift-title{font-size:15px}.mass-gifts .gift-amount{font-size:17px}
+/* Two complete cards and half of the next one signal horizontal browsing. */
+.zones{gap:10px;margin:12px 0 0;padding:0 0 2px}
+.zones>.zone-card{flex:0 0 calc(40% - 8px);min-width:0;height:64px;border-radius:9px;background:linear-gradient(120deg,#f6f8ff,#ecf1fc);box-shadow:inset 0 0 0 1px #e4eaf5;color:#3c5377}
+.zones>.zone-dividend{background:linear-gradient(120deg,#fff9f5,#fbefe7);box-shadow:inset 0 0 0 1px #f5e6dc;color:#87503f}
+.zones>.zone-ai{background:linear-gradient(120deg,#f7f5ff,#eeeafa);box-shadow:inset 0 0 0 1px #e7e2f5;color:#565083}
+.zone-card:after{display:none}
+.zone-card-copy{position:static;height:100%;padding:10px 8px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.zones .zone-card strong{display:flex;align-items:center;justify-content:space-between;width:100%;font-size:15px;line-height:22px;color:inherit;letter-spacing:0}.zone-entry-arrow{font:18px/1 Arial,sans-serif;opacity:.6}
+.zone-card-reward{font-size:12px;line-height:18px;margin-top:1px;color:inherit;white-space:nowrap;letter-spacing:-.2px}
+.zone-card-action{font-size:12px;line-height:24px;height:24px;margin-top:7px;padding:0 9px;gap:7px;background:#ffffffdb;color:inherit}
+/* Main funds and chart labels. */
+.products>.figma-tabs{height:44px}
+.products>.figma-tabs button,.products>.figma-tabs button[aria-selected=true]{font-size:16px}
+.product-description strong{font-size:17px;line-height:1.5}
+.product-description p{font-size:14px;line-height:1.65;color:#7b7b88}
+.product-panels .evidence-chart{aspect-ratio:auto;min-height:214px;height:214px;grid-template-rows:18px minmax(0,1fr) 18px;padding:7px 4px!important;gap:3px}
+.chart-heading,.chart-heading span{font-size:12px;line-height:18px}
+.chart-legend,.chart-legend span{font-size:12px;line-height:18px;color:#777}
+.evidence-chart svg text{font-size:12px}
+.product-bar{grid-template-columns:minmax(0,1fr) 78px;gap:8px;min-height:88px;padding:12px 8px!important}
+.product-name{font-size:16px;line-height:24px}
+.product-meta{display:flex;gap:4px;white-space:nowrap}
+.product-meta span{font-size:12px;line-height:20px;padding:0 4px}
+.product-bar-meta{gap:6px;margin-top:5px}
+.product-bar .product-detail{font-size:12px;line-height:24px;white-space:nowrap;color:#777;min-width:40px;min-height:28px}
+.product-buy{font-size:15px;width:78px;height:38px;line-height:38px}
+.member-leaderboards{margin:0 12px;padding-top:15px}
+.board-tabs{gap:20px;padding-bottom:10px}
+.board-tabs button,.board-tabs button[aria-selected=true]{font-size:16px;line-height:24px}
+.rank-row{grid-template-columns:23px minmax(0,1fr) 78px;grid-template-rows:43px 30px;column-gap:8px;row-gap:3px;min-height:100px;padding:12px 0}
+.rank-medal{grid-column:1;grid-row:1/3}
+.rank-product{grid-column:2;grid-row:1/3;align-self:center}
+.rank-product strong{font-size:15px;line-height:23px}
+.rank-product p{display:flex;align-items:center;flex-wrap:nowrap;gap:3px;margin-top:5px;white-space:nowrap}
+.rank-product p span{font-size:12px;line-height:20px;padding:0 3px}
+.rank-detail{display:inline-block;min-height:28px;padding:0 1px;background:transparent;color:#777;font-size:12px;line-height:24px;white-space:nowrap}
+.rank-return{grid-column:3;grid-row:1;text-align:right;align-self:end}
+.rank-return strong{font-size:20px;line-height:24px}
+.rank-return small{font-size:12px;line-height:18px;color:#888}
+.rank-buy{grid-column:3;grid-row:2;justify-self:end;align-self:start;font-size:13px;width:68px;line-height:28px;height:30px;padding:0;border-radius:16px}
+.content-picker{height:40px;gap:22px}
+.content-picker button{height:40px;min-width:36px}
+.content-picker strong,.static-picker span{font-size:16px}
+.education-tiles .content-tile strong{font-size:14px;line-height:20px}
+.media-tiles .content-tile strong{font-size:21px}
+.media-tiles .lesson-action{font-size:15px;line-height:34px}
+.site-toast{font-size:14px}.site-dialog{font-size:15px}
+.footer iframe.original-return-guide{height:900px;min-height:0;aspect-ratio:auto}
+.footer .inline-return-guide{display:block;width:100%;height:auto;min-height:0;margin:0;padding:0;border:0;border-radius:0;background:transparent;aspect-ratio:auto}
+.footer-retry{display:block;padding:20px 15px;color:#aaa8c4;font-size:14px}
+/* Wide, compact comparison matrix; long cells scroll instead of wrapping. */
+.tier-table-section{width:390px;max-height:calc(100vh - 100px)!important;overflow:auto;resize:horizontal;max-width:calc(100vw - 32px)}
+.tier-table-section h2{font-size:14px;line-height:20px;padding:10px}
+.tier-table-section .tier-table-scroll{overflow:visible;padding:0 8px 8px}
+.tier-table-section .tier-table{table-layout:auto!important;width:max-content;min-width:100%!important;font-size:12px!important;white-space:nowrap}
+.tier-table-section .tier-table th,.tier-table-section .tier-table td{font-size:12px!important;padding:3px 8px!important;line-height:20px!important;white-space:nowrap!important;overflow-wrap:normal!important;word-break:normal!important}
+.tier-table-section .tier-table th:first-child{width:auto!important}
+.tier-table-section .tier-table small{display:inline;font-size:12px;line-height:20px;margin:0 0 0 5px}
+.tier-table-section .tier-category th{padding:4px 8px!important;font-size:12px!important}
+@media(min-width:780px){body{--comparison-width:clamp(210px,calc(100vw - 600px),520px)}.phone,.member-preview{width:390px;max-width:390px;margin-left:calc(var(--comparison-width) + 32px);margin-right:0}.tier-table-section{left:16px;width:var(--comparison-width)}}
+@media(max-width:779px){.phone,.member-preview{width:100%;max-width:430px;margin-left:auto;margin-right:auto}.tier-table-section,.tier-annotations,.annotation-toggle{display:none!important}}
+@media(max-width:370px){.member-preview{gap:3px}.member-preview a{min-width:61px;padding:7px 10px}.phone{padding-left:10px;padding-right:10px}.section{padding-left:10px;padding-right:10px}.private-gifts .gift-title{font-size:12px}.gift button,.private-gifts .gift button{padding:0 7px}.product-bar{grid-template-columns:minmax(0,1fr) 67px;gap:4px;padding-left:5px!important;padding-right:5px!important}.product-buy{width:67px;font-size:14px}.product-bar-meta{gap:3px}.product-meta span{padding:0 2px}.member-leaderboards{margin-left:10px;margin-right:10px}.rank-row{grid-template-columns:20px minmax(0,1fr) 72px;column-gap:5px}.rank-return strong{font-size:19px}.rank-product p{gap:2px;flex-wrap:wrap}.rank-product strong{font-size:14px}.content-picker{gap:18px}.education-tiles .content-tile strong{font-size:12px}.footer{width:calc(100% + 20px);margin-left:-10px;margin-right:-10px}}
+.zone-card-art{width:80px;height:56px;top:17px;right:1px}
+.zone-ai .zone-card-art{width:70px;right:3px}
+.evidence-chart svg text{font-size:14.5px}
+/* The three section headers share one treatment. */
+.section.benefits,.section.products,.section.member-content{border-radius:16px}
+.benefits>h2{margin:-15px -15px 15px;padding:16px 15px 14px;background:linear-gradient(105deg,var(--soft),#fff 88%)}
+.member-content{padding-top:0}
+.member-content>h2{margin:0 -15px;padding:16px 15px 27px;background:linear-gradient(105deg,var(--soft),#fff 88%)}
+#member-content-groups .content-picker{display:flex;position:relative;z-index:1;height:42px;padding:4px;margin:-19px 0 12px;gap:4px;border:0;border-radius:24px;background:white;box-shadow:0 7px 18px #3e355414}
+#member-content-groups .content-picker button{flex:1;justify-content:center;height:34px;padding:0 6px;border-radius:20px;color:var(--accent-dark)}
+#member-content-groups .content-picker strong{font-size:15px;font-weight:500}
+#member-content-groups .content-picker button[aria-selected=true]{color:white;background:linear-gradient(110deg,var(--accent),var(--accent-dark))}
+#member-content-groups .content-picker button:after{display:none}
+#member-content-groups .static-picker span{padding:5px 20px;border-radius:18px;background:var(--soft);color:var(--accent-dark);font-size:15px;line-height:24px}
+.media-tiles .content-tile{position:relative;display:grid;grid-template-columns:46px minmax(0,1fr) 52px;gap:10px;padding:10px 12px!important;border:1px solid var(--line);border-radius:12px;background:linear-gradient(112deg,var(--soft),#fff)!important;overflow:hidden}
+.media-tiles .lesson-art{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #ffffffb0;border-radius:14px;background:#ffffffb0;box-shadow:0 4px 10px #4f538510;color:var(--accent-dark)}
+.media-tiles .lesson-art svg{width:28px;height:28px}
+.media-copy{display:flex;flex-direction:column;gap:3px;min-width:0;text-align:left}
+.media-tiles .media-copy strong{font-size:18px;line-height:25px;letter-spacing:.5px;color:var(--accent-dark)}
+.media-copy small{font-size:12px;line-height:17px;color:#7c7a8c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.media-tiles .lesson-action{font-size:14px;line-height:29px;border:1px solid var(--line);border-radius:18px;background:white;color:var(--accent-dark);padding:0 10px}
+.education-tiles .content-tile{border-radius:10px;border:1px solid var(--line);background:linear-gradient(150deg,var(--soft),#fff);gap:5px}
+.education-tiles .lesson-art{color:var(--accent-dark)}
+.original-banners,.original-banner,.original-banner img{border-radius:10px}
+.original-banners{clip-path:inset(0 round 10px)}
+.original-banner{overflow:hidden}
+.tier-table-section .tier-table td[colspan]:not([colspan="1"]){text-align:left}
+.table-expand{float:right;padding:0 6px;border:1px solid #ffffff30;border-radius:4px;color:#ddd;background:transparent;font-size:12px;line-height:20px}
+.tier-table-section.table-expanded{width:calc(100vw - 32px)!important;z-index:40;box-shadow:0 12px 48px #0007}
+@media(max-width:370px){.benefits>h2{margin-left:-10px;margin-right:-10px;padding-left:10px;padding-right:10px}.member-content>h2{margin-left:-10px;margin-right:-10px;padding-left:10px;padding-right:10px}.media-tiles .content-tile{grid-template-columns:36px minmax(0,1fr) 50px;gap:8px;padding:8px!important}.media-tiles .lesson-art{width:36px;height:36px;border-radius:12px}.media-tiles .lesson-art svg{width:24px;height:24px}.media-tiles .media-copy strong{font-size:17px}.media-tiles .lesson-action{padding:0 9px}}
+
+/* Article cards use the same two-and-a-half-card discovery layout. */
+.education-tiles{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;touch-action:pan-x pan-y;cursor:grab}
+.education-tiles::-webkit-scrollbar{display:none}
+.education-tiles:active{cursor:grabbing}
+.education-tiles .content-tile{flex:0 0 calc(40% - 8px);min-width:0;height:88px!important;min-height:88px!important;scroll-snap-align:start;padding:9px 6px;gap:6px;user-select:none}
+.education-tiles .content-tile strong{font-size:14px;line-height:21px;white-space:nowrap}
+#content-edu,.education-tiles{height:88px!important;min-height:88px!important}
+.single-content>h2{padding-bottom:14px;margin-bottom:12px}
+
+/* Preview controls, comparison matrix and review notes belong outside the device. */
+.member-preview,.tier-table-section,.tier-annotations,.annotation-toggle{display:none!important}
+.phone{width:100%;max-width:430px;margin:0 auto!important}
+
+/* Switching content types never changes the module height. */
+#member-content-groups .content-deck,
+#member-content-groups .content-tiles,
+#member-content-groups .content-tile{height:88px!important;min-height:88px!important}

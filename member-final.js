@@ -1,0 +1,75 @@
+(() => {
+  const config={mass:{name:'大众会员',experience:1888,cash:null,level:0},gold:{name:'金卡会员',experience:2888,cash:'0.28',level:1},sunflower:{name:'金葵花会员',experience:8888,cash:'0.58',level:2},private:{name:'金葵花 M3—私人银行会员',experience:18888,cash:'1.88',level:3}};
+  const selected=new URLSearchParams(location.search).get('grade')||'private';
+  const grade=config[selected]?selected:'private',member=config[grade];
+  document.body.dataset.grade=grade;document.title='天弘基金 M+｜'+member.name;
+  document.querySelector('#member-grade-name').textContent=member.name;
+  document.querySelectorAll('.member-preview a').forEach(a=>{if(a.getAttribute('href')==='?grade='+grade)a.setAttribute('aria-current','page');});
+  document.querySelector('.hero').innerHTML='<img class="figma-header-logo" src="assets/header-logo-'+grade+'.png" alt="天弘基金"><p class="figma-header-subtitle">粉丝福利</p><small class="figma-header-caption">关注招财号有礼</small>';fetch('member-themes.json').then(r=>r.json()).then(themes=>document.querySelector('.hero').style.backgroundImage='url("'+themes[grade]+'")');
+  const dialog=document.querySelector('dialog');
+  const show=(title,body)=>{dialog.querySelector('h2').textContent=title;dialog.querySelector('#dialog-body').innerHTML=body;dialog.showModal();};
+  const toast=document.createElement('div');toast.className='site-toast';toast.setAttribute('role','status');document.body.append(toast);let toastTimer;
+  const entry=()=>{toast.textContent='待补充跳转链接';toast.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('visible'),2200);};window.mplusEntry=entry;
+  const gifts=document.querySelector('.gifts');
+  gifts.classList.add(member.level===3?'private-gifts':member.level===0?'mass-gifts':'standard-gifts');
+  gifts.innerHTML='<div class="gift"><div class="gift-title">基金体验金</div><p class="gift-amount"><strong>'+member.experience+'元</strong></p><img class="gift-art" src="assets/img3D1.png" alt=""><button data-entry="基金体验金">前往抽取</button></div>'+(member.cash?'<div class="gift"><div class="gift-title">现金红包</div><p class="gift-amount">'+member.cash+'元</p><img class="gift-art" src="assets/img1.png" alt=""><button data-entry="现金红包">前往抽取</button></div>':'')+(member.level===3?'<div class="gift award-gift"><span class="gift-exclusive-badge">私行独享</span><div class="gift-title">每月专属大奖</div><p class="gift-amount"><strong>188元</strong></p><img class="gift-art" src="assets/img251.png" alt=""><button data-award>前往抽奖</button></div>':'');
+  const activities=[{title:'弘粉圈',text:'分享观点，参与话题活动',reward:'赢至高18.88元红包',art:'img40.png',tone:'pink'},{title:'来定投',text:'定投好礼，持续参与',reward:'瓜分12万份红包',art:'img251.png',tone:''},{title:'指数拼图',text:'看行情，集拼图',reward:'赢超百万份红包',art:'img6216.png',tone:''},{title:'稳健产品专题 A',text:'查看当期产品与活动',reward:'查看活动',art:'img7.png',tone:'blue'},{title:'稳健产品专题 B',text:'查看当期产品与活动',reward:'查看活动',art:'img7.png',tone:'blue'}];
+  if(member.level===3)activities.push({title:'私享交流',text:'策略问答 · 私享会',reward:'查看活动',art:'imgJimeng2026062531561.png',tone:'blue'});
+  document.querySelector('.activity-rail').innerHTML=activities.map(a=>'<button type="button" class="activity-card '+a.tone+'" data-entry="'+a.title+'"><img class="activity-art" src="assets/'+a.art+'" alt=""><h3>'+a.title+'</h3><p>'+a.reward+'</p><span class="reward">参与活动</span></button>').join('');
+  const activityRail=document.querySelector('.activity-rail');
+  const activityWrap=document.createElement('div');activityWrap.className='activity-wrap';activityRail.before(activityWrap);activityWrap.append(activityRail,document.querySelector('[data-for="activity-rail"]'));
+  const bondCode=window.memberBondTiers[grade],bond=window.memberLiveFunds[bondCode],periods=window.memberBondPeriods[bondCode];
+  window.memberProducts.bond={...window.memberProducts.bond,name:bond.name,code:bondCode+' · '+(grade==='private'?bond.risk:'R3 中风险'),slogan:({mass:'严选优质产业债，纯债运作稳中求进',gold:'天弘弘利债券，关注债券资产配置',sunflower:'天弘多元增利，关注多元债券配置',private:'天弘通利混合，关注股债资产配置'})[grade],description:({mass:'聚焦高等级产业债核心品种，不投股票与可转债；以票息打底力争低波动。',gold:'基金类型为债券型，产品信息及投资范围以基金法律文件为准。',sunflower:'基金类型为债券型，产品信息及投资范围以基金法律文件为准。',private:'基金类型为混合型，涉及股票等资产投资，产品风险等级以销售渠道为准。'})[grade],years:periods.map(x=>x.label),fund:periods.map(x=>x.fund),base:periods.map(x=>x.base)};
+  const chart=p=>{
+    const high=Math.max(...p.fund,...p.base,0),low=Math.min(...p.fund,...p.base,0),scale=106/(high-low||1),baseline=20+high*scale,gap=300/p.years.length,bar=23;
+    let svg='<svg viewBox="0 0 300 160" role="img" aria-label="'+p.years.map((y,i)=>y+(y.startsWith('近')?'基金':'年基金')+p.fund[i]+'%，基准'+p.base[i]+'%').join('；')+'"><line x1="6" x2="294" y1="'+baseline+'" y2="'+baseline+'" stroke="#ece9f3"/>';
+    p.years.forEach((year,i)=>{const center=gap*(i+.5);[p.fund[i],p.base[i]].forEach((v,j)=>{const h=v>=0?v*scale:-v*scale,x=center+(j===0?-bar-3:3),y=v>=0?baseline-h:baseline;svg+='<rect x="'+x+'" y="'+y+'" width="'+bar+'" height="'+Math.max(h,1)+'" rx="3" fill="'+(j===0?'var(--chart-fund)':'var(--chart-base)')+'"/><text x="'+(x+bar/2)+'" y="'+(v>=0?y-5:y+h+11)+'" text-anchor="middle" fill="var(--chart-label)" font-size="9">'+v.toFixed(2)+'</text>';});svg+='<text x="'+center+'" y="154" text-anchor="middle" fill="var(--chart-label)" font-size="9">'+year+'</text>';});
+    return svg+'</svg>';
+  };
+  const labels={bond:'投稳健',dividend:'投红利',cloud:'投AI'};
+  document.querySelector('.product-rail').innerHTML=Object.entries(window.memberProducts).map(([key,p])=>'<article class="product-card" data-product="'+key+'"><div class="product-card-cover"><h3>'+labels[key]+'</h3><small>甄选产品</small></div><div class="product-card-inner"><h3 class="product-name">'+p.name+'</h3><p class="product-meta"><span>'+p.code+'</span></p><div class="product-description"><strong>'+p.slogan+'</strong><p>'+p.description+'</p></div><div class="evidence-chart"><div class="chart-heading">'+(key==='bond'?'阶段业绩对照':'完整年度业绩对照')+'<span>单位：%</span></div>'+chart(p)+'<div class="chart-legend"><span><i></i>基金</span><span><i></i>业绩比较基准</span></div><p class="chart-source">数据取自原 Figma 设计稿引用的基金定期报告，上线前需核验。过往业绩不代表未来。</p></div><button type="button" class="product-detail" data-detail="'+key+'">查看产品解读</button></div></article>').join('');
+  const productRail=document.querySelector('.product-rail');
+  productRail.className='product-panels';productRail.removeAttribute('tabindex');productRail.removeAttribute('aria-label');
+  productRail.insertAdjacentHTML('beforebegin','<div class="figma-tabs" role="tablist" aria-label="产品方向">'+Object.entries(labels).map(([key,label],i)=>'<button role="tab" type="button" data-product-tab="'+key+'" aria-selected="'+(i===0)+'" aria-controls="product-'+key+'">'+label+'</button>').join('')+'</div>');
+  productRail.querySelectorAll('.product-card').forEach((card,i)=>{card.hidden=i!==0;card.id='product-'+card.dataset.product;card.setAttribute('role','tabpanel');});
+  document.querySelector('[data-for="product-rail"]').hidden=true;
+  document.querySelectorAll('[data-product-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-product-tab]').forEach(x=>x.setAttribute('aria-selected',String(x===b)));productRail.querySelectorAll('.product-card').forEach(card=>card.hidden=card.dataset.product!==b.dataset.productTab);}));
+  productRail.querySelectorAll('.product-card').forEach(card=>{
+    const inner=card.querySelector('.product-card-inner'),name=card.querySelector('.product-name'),meta=card.querySelector('.product-meta'),detail=card.querySelector('.product-detail');
+    const footer=document.createElement('div');footer.className='product-bar';const info=document.createElement('div');info.className='product-bar-info';const metaLine=document.createElement('div');metaLine.className='product-bar-meta';
+    meta.innerHTML=window.memberProducts[card.dataset.product].code.split(' · ').map(t=>'<span>'+t+'</span>').join('');detail.textContent='详情 >';metaLine.append(meta,detail);info.append(name,metaLine);footer.append(info);const buy=document.createElement('button');buy.type='button';buy.className='product-buy';buy.dataset.entry=window.memberProducts[card.dataset.product].name+'购买入口';buy.textContent='买一笔';footer.append(buy);inner.append(footer);
+  });
+  const boards=document.querySelector('#member-leaderboards');boards.hidden=member.level<2;
+  boards.innerHTML='<div class="board-tabs figma-tabs" role="tablist" aria-label="人气榜单">'+[['定投人气榜','sip'],['新客心选榜','new']].map(([title,key],i)=>'<button role="tab" type="button" data-board-tab="'+key+'" aria-selected="'+(i===0)+'" aria-controls="board-'+key+'">'+title+'</button>').join('')+'</div>'+[['定投人气榜','定投人数','sip'],['新客心选榜','新客人数','new']].map(([title,metric,key],i)=>'<div class="leaderboard" role="tabpanel" id="board-'+key+'" '+(i?'hidden':'')+'>'+window.memberBoardCodes[key].map((code,rank)=>{const record=window.memberLiveFunds[code],p={name:record.name,code:code+' · '+record.risk};return '<div class="rank-row"><span class="rank-medal medal-'+rank+'" aria-label="第'+(rank+1)+'位">'+(rank+1)+'</span><div class="rank-product"><strong>'+p.name+'</strong><p>'+p.code.split(' · ').map(t=>'<span>'+t+'</span>').join('')+'<button type="button" class="rank-detail" data-entry="'+p.name+'详情">详情 &gt;</button></p></div><button class="rank-buy" type="button" data-entry="'+p.name+'购买入口">买一笔</button></div>';}).join('')+'</div>').join('');
+  document.querySelectorAll('[data-board-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-board-tab]').forEach(x=>x.setAttribute('aria-selected',String(x===b)));boards.querySelectorAll('[role=tabpanel]').forEach(panel=>panel.hidden=panel.id!=='board-'+b.dataset.boardTab);}));
+  const icons={edu:'<path d="M3 4h6a3 3 0 0 1 3 3v13a4 4 0 0 0-4-3H3zm18 0h-6a3 3 0 0 0-3 3v13a4 4 0 0 1 4-3h5z"/>',video:'<rect x="3" y="4" width="18" height="16" rx="3"/><path d="m10 8 6 4-6 4z"/>',podcast:'<path d="M4 14v-3a8 8 0 0 1 16 0v3M4 12H2v7h5v-7zm16 0h2v7h-5v-7z"/>',live:'<rect x="6" y="6" width="12" height="12" rx="3"/><path d="m11 9 4 3-4 3zM3 6a12 12 0 0 0 0 12M21 6a12 12 0 0 1 0 12"/>'};
+  const content=[{key:'edu',title:'文章',subtitle:'投资知识，循序了解',items:['AI 坐标系','红利小百科','红利股东课'],action:'阅读'},{key:'video',title:'视频',subtitle:'精选财富视频',items:['财富视频'],action:'观看'},{key:'podcast',title:'播客',subtitle:'听见投资背后的故事',items:['人间钱话'],action:'收听'},{key:'live',title:'直播',subtitle:'私人银行会员专享',items:['私享直播'],action:'进入'}].slice(0,member.level+1).reverse();
+  const contentRoot=document.querySelector('#member-content-groups');
+  contentRoot.innerHTML=(member.level?'<div class="content-picker" role="tablist" aria-label="内容形式">'+content.map((c,i)=>'<button type="button" role="tab" data-content-kind="'+c.key+'" aria-selected="'+(i===0)+'" aria-controls="content-'+c.key+'"><span aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">'+icons[c.key]+'</svg></span><strong>'+c.title+'</strong></button>').join('')+'</div>':'')+content.map((c,i)=>'<div class="content-deck" role="tabpanel" id="content-'+c.key+'" '+(i?'hidden':'')+'><div class="content-tiles '+(c.key==='edu'?'education-tiles':'media-tiles')+'">'+c.items.map((item,n)=>'<button type="button" class="content-tile" data-content="'+item+'"><span class="lesson-art">'+(c.key==='edu'?'<span class="lesson-number">0'+(n+1)+'</span>':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">'+icons[c.key]+'</svg>')+'</span><strong>'+item+'</strong><span class="lesson-action">'+c.action+'</span></button>').join('')+'</div></div>').join('');
+  document.querySelectorAll('[data-content-kind]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-content-kind]').forEach(x=>x.setAttribute('aria-selected',String(x===b)));contentRoot.querySelectorAll('[role=tabpanel]').forEach(panel=>panel.hidden=panel.id!=='content-'+b.dataset.contentKind);}));
+  document.querySelectorAll('.rail').forEach(rail=>{
+    const dots=document.querySelector('[data-for="'+Array.from(rail.classList).find(x=>x.endsWith('-rail'))+'"]');
+    dots.innerHTML=Array.from(rail.children).map((card,i)=>'<button type="button" aria-label="'+(card.querySelector('h3')?.textContent||'卡片')+'" aria-current="'+(i===0)+'"></button>').join('');
+    const move=i=>rail.scrollTo({left:rail.children[i].offsetLeft-rail.children[0].offsetLeft,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+    Array.from(dots.children).forEach((b,i)=>b.addEventListener('click',()=>move(i)));
+    rail.addEventListener('scroll',()=>{const step=rail.children[1]?.offsetLeft-rail.children[0].offsetLeft||1;const index=Math.min(rail.children.length-1,Math.round(rail.scrollLeft/step));Array.from(dots.children).forEach((b,i)=>b.setAttribute('aria-current',String(i===index)));},{passive:true});
+    rail.addEventListener('keydown',e=>{if(e.target!==rail||!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();const index=Array.from(dots.children).findIndex(b=>b.getAttribute('aria-current')==='true');move(Math.max(0,Math.min(rail.children.length-1,index+(e.key==='ArrowRight'?1:-1))));});
+    let startX=0,startLeft=0,dragged=false,down=false;
+    rail.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')return;startX=e.clientX;startLeft=rail.scrollLeft;dragged=false;down=true;});
+    rail.addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-startX;if(Math.abs(dx)>6){dragged=true;rail.style.scrollSnapType='none';rail.scrollLeft=startLeft-dx;}});
+    const end=()=>{down=false;rail.style.scrollSnapType='';};window.addEventListener('pointerup',end);window.addEventListener('pointercancel',end);
+    rail.addEventListener('click',e=>{if(dragged){e.preventDefault();e.stopImmediatePropagation();dragged=false;}},true);
+  });
+  document.addEventListener('click',e=>{
+    const b=e.target.closest('button');if(!b)return;
+    if(b.hasAttribute('data-entry')){if(b.dataset.url)location.href=b.dataset.url;else entry();}
+    if(b.hasAttribute('data-content'))entry();
+    if(b.hasAttribute('data-detail')){const p=window.memberProducts[b.dataset.detail];show(p.name,'<p>'+p.code+'</p><p>'+p.slogan+'</p><p>'+p.description+'</p><p>完整产品解读及交易信息需以最新基金法律文件和销售页面为准。</p>');}
+    if(b.hasAttribute('data-board'))show(b.dataset.board==='sip'?'定投人气榜':'新客心选榜','<p>按'+(b.dataset.board==='sip'?'定投人数':'新客买入人数')+'从高到低排序。当前三行是产品样式预览，不代表真实榜序。真实排名和人数尚未接入，统计周期、范围和去重规则待确认。</p>');
+    if(b.hasAttribute('data-search'))show('回访会员专区','<p>打开招商银行 App，搜索「天弘基金」，进入招财号，点击「宠粉福利专栏」。</p>');
+    if(b.hasAttribute('data-award'))entry();
+  });
+  dialog.addEventListener('close',()=>{if(location.hash==='#monthly-188')history.replaceState(null,'',location.pathname+location.search);});
+  if(location.hash==='#monthly-188'&&member.level===3)document.querySelector('[data-award]').click();
+  window.addEventListener('hashchange',()=>{if(location.hash==='#monthly-188'&&member.level===3&&!dialog.open)document.querySelector('[data-award]').click();});
+})();

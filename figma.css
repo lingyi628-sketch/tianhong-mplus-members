@@ -1,0 +1,147 @@
+/* Visual source: stoXTQ0Oh9ysNwql98IHIl / 16:6753. Layout follows the approved revised content. */
+body{background:#1b1b29;color:#333}
+#mp-compact .phone{background:linear-gradient(141deg,#464773 0,#121420 320px,#1b1b29 700px);max-width:420px;padding:16px 15px;border-radius:0;box-shadow:none}
+#mp-compact .hero{background: url('assets/img441.png') center/100% 100% no-repeat;height:110px;padding:21px 14px;border-radius:8px;position:relative}
+#mp-compact .hero h2{display:flex;align-items:center;gap:8px;margin:0 0 7px}
+#mp-compact .brand-logo{width:83px;height:20px;object-fit:contain}
+#mp-compact .brand-plus{color:#e7e7ff;font-size:13px;letter-spacing:1px}
+#mp-compact .hero p{font-size:12px;color:#cdcfff;margin:5px 0}
+#mp-compact .hero .small{font-size:10px;color:#cdcfff;position:absolute;left:14px;bottom:12px}
+#mp-compact .section{background:#fff;border-radius:8px;padding:15px;margin-top:14px;color:#333}
+#mp-compact h3{font-family:'Songti SC','STSong',serif;font-weight:500;font-size:18px}
+#mp-compact .label{font-family:'Songti SC','STSong',serif;color:#333;font-size:16px;margin:11px 0 10px}
+#mp-compact .two{gap:9px}
+#mp-compact .gift{background:linear-gradient(#e1def6,#fff 80%);border:1px solid #eeeef9;text-align:center;padding:10px 8px;border-radius:8px}
+#mp-compact .gift .small{color:#333;font-size:13px}
+#mp-compact .gift .amount{color:#f7150a;font-size:18px;margin:2px 0}
+#mp-compact .gift-art{display:block;object-fit:contain;margin:0 auto 6px;height:45px;width:58px}
+#mp-compact .gift button{background:linear-gradient(115deg,#7d7bb5,#8e91e8);border-radius:18px;font-size:12px;width:auto;padding:5px 14px;min-height:28px}
+#mp-compact .activities{gap:7px}
+#mp-compact .activity{background:linear-gradient(#ffe3d0,#fff5ec);border-radius:7px;position:relative;padding:8px 4px 10px;color:#7b482b;font-size:13px;min-height:0}
+#mp-compact .activity.blue{background:linear-gradient(#dfeaff,#f4f8ff);color:#4b60ad}
+#mp-compact .art{height:62px;margin:0 0 5px}
+#mp-compact .activity-art{object-fit:contain;width:79px;height:62px;max-width:100%}
+#mp-compact .reward{font-size:10px;padding:4px 1px;margin-top:7px;background:#ff9346;border-radius:12px;white-space:nowrap}
+#mp-compact .blue .reward{background:#8095ef}
+#mp-compact .activities.more .activity{padding:10px 3px}
+#mp-compact .activity>.small{font-size:10px;color:inherit}
+#mp-compact .more{margin-top:9px}
+#mp-compact #mp-stable-banner{height:78px;position:relative;overflow:hidden;border-radius:8px;padding:12px!important;background:linear-gradient(120deg,#fff0da,#f4d6b0)!important;color:#92552d!important}
+#mp-compact #mp-stable-title{font-size:15px;position:relative;z-index:1;max-width:72%}
+#mp-compact #mp-stable-sub{font-size:10px;position:relative;z-index:1;max-width:70%}
+#mp-compact .banner-art{position:absolute;right:4px;top:8px;width:80px;height:63px;object-fit:contain}
+#mp-compact #mp-stable-banner + .row{justify-content:center;gap:10px}
+#mp-compact #mp-banner-prev,#mp-compact #mp-banner-next{background:transparent;color:#8a81bd;padding:2px 8px;min-height:26px}
+#mp-compact .product{background:linear-gradient(#f1f3ff,#f9faff);border-radius:8px;padding:13px;border:1px solid #eceefa}
+#mp-compact .editorial{background:#fff;box-shadow:0 0 0 7px #ebedff;margin:13px 7px}
+#mp-compact .editorial h3{font-family:inherit;font-size:16px;line-height:1.5}
+#mp-compact .chip{background:#e8eeff;color:#6678ad;border-radius:3px;font-size:11px}
+#mp-compact .facts{background:linear-gradient(#e9edff,#f5f7ff);font-size:12px}
+#mp-compact .read{border-color:#e8ecf9;font-size:12px}
+#mp-compact .small{color:#999;font-size:11px}
+#mp-compact .tabs button{background:#e8edff;color:#6574b5;border-radius:7px;font-size:13px;min-height:36px;padding:7px 3px}
+#mp-compact .tabs button[aria-selected=true]{background:linear-gradient(110deg,#7776b9,#9193dc);color:#fff}
+#mp-compact .selection-strip{background:linear-gradient(110deg,#f2edff,#e8eeff);color:#6a6d9b;font-size:11px;padding:8px}
+#mp-compact summary{color:#7e82be;font-size:12px}
+#mp-compact .criteria .metric,#mp-compact .mini-product{background:#f1f4ff;color:#66729e}
+#mp-compact .full{background:linear-gradient(110deg,#7d7bb5,#8e91e8);border-radius:18px;padding:7px;font-size:12px}
+#mp-compact .report{padding:0;background:#f1f5ff;border-radius:7px;overflow:hidden;color:#333;font-size:12px}
+#mp-compact .preview{background:linear-gradient(115deg,#e5eaff,#d7d0ff);height:68px;min-height:0;position:relative;border-radius:0;padding:0}
+#mp-compact .report-art{width:70px;height:65px;object-fit:contain}
+#mp-compact .report-caption{padding:9px 5px;text-align:center;font-size:12px;color:#555}
+#mp-compact .entry{font-size:13px;border-color:#edf0f7}
+#mp-compact .entry:hover{color:#7d7bb5}
+#mp-compact .footer{color:#979797}
+#mp-compact .back{color:#bcbef2}
+@media(max-width:350px){#mp-compact .section{padding:12px}#mp-compact .reward{font-size:9px}#mp-compact .activity{font-size:12px}}
+#mp-compact .monthly-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(120deg,#ece9ff,#e1eaff);border-radius:9px;padding:15px 13px;margin:12px 0}
+#mp-compact .monthly-kicker{font-size:10px;color:#797ca4;letter-spacing:1px}
+#mp-compact .monthly-heading h2{font-size:28px;font-weight:700;font-style:italic;color:#424580;margin:3px 0 0;letter-spacing:-1px}
+#mp-compact .monthly-stamp{border-left:1px solid #c7c9e6;padding-left:12px;color:#8585b0;font-size:11px}
+#mp-compact .monthly-switch{display:grid;grid-template-columns:1fr 1fr;background:#f3f3f9;border-radius:8px;overflow:hidden}
+#mp-compact .monthly-switch button{background:transparent;color:#9293a2;border-radius:0;padding:10px 5px;font-weight:500;font-size:16px}
+#mp-compact .monthly-switch button span{display:block;font-weight:400;font-size:10px;margin-top:2px}
+#mp-compact .monthly-switch button[aria-selected=true]{background:linear-gradient(#e5e6ff,#f0f3ff);color:#6667b2;box-shadow:inset 0 2px #8b8ce3}
+#mp-compact .monthly-topics{display:flex;gap:7px;margin:10px 0}
+#mp-compact .monthly-topics button{padding:6px 12px;background:#fff;border:1px solid #dfe1f0;color:#777d9b;font-size:12px;border-radius:6px}
+#mp-compact .monthly-topics button[aria-pressed=true]{background:#eceeff;border-color:#969ae4;color:#6868b2}
+#mp-compact .monthly-insight{background:linear-gradient(#f3f4ff,#fff);border:1px solid #e7e9f7;border-radius:9px;padding:13px}
+#mp-compact .monthly-insight-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px;gap:6px}
+#mp-compact #monthly-topic-title{font-size:19px;font-weight:600;color:#333}
+#mp-compact .monthly-insight-label{font-size:10px;color:#8488bc;background:#e9ebfc;padding:4px 7px;border-radius:5px}
+#mp-compact #monthly-thesis{font-size:13px;line-height:1.8;color:#4a4a5c}
+#mp-compact .monthly-reasons{margin-top:11px;padding:9px 0;border-top:1px solid #e5e7f4;border-bottom:1px solid #e5e7f4}
+#mp-compact .monthly-reasons>div{display:grid;grid-template-columns:56px 1fr;gap:8px;font-size:11px;line-height:1.65;padding:5px 0;color:#707083}
+#mp-compact .monthly-reasons span{color:#7d7fc0;font-weight:500}
+#mp-compact .monthly-evidence{background:#edf0ff;padding:9px;margin-top:10px;border-radius:6px;font-size:10px;color:#8b8b9b}
+#mp-compact .monthly-evidence>span{display:block;color:#6d74a8;margin-bottom:3px}
+#mp-compact .monthly-read{background:transparent;color:#777abd;padding:10px 0 0;font-size:11px;width:100%;text-align:right}
+#mp-compact .monthly-related{display:flex;justify-content:space-between;align-items:center;margin:14px 0 8px;border-left:3px solid #8a8be0;padding-left:8px;font-size:13px;font-weight:500}
+#mp-compact .monthly-fund{background:#f5f6fc;padding:12px;border-radius:7px;font-size:13px}
+#mp-compact .monthly-fund-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:7px}
+#mp-compact .monthly-fund-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:5px}
+#mp-compact .monthly-fund-tags span{font-size:9px;border:1px solid #cbd4fa;color:#8f9bc4;padding:1px 4px;border-radius:2px}
+#mp-compact #monthly-fund-detail{background:linear-gradient(110deg,#7978b8,#9093df);border-radius:16px;font-size:11px;padding:6px 12px;white-space:nowrap}
+#mp-compact .monthly-source{font-size:9px;line-height:1.6;color:#999;margin-top:10px}
+#mp-compact #mp-home>.section>h3{font-family:inherit;font-size:20px;font-weight:600;color:#45466b;letter-spacing:1px;padding-bottom:10px;border-bottom:1px solid #ececf5;margin-bottom:12px}
+#mp-compact .label{font-family:inherit;font-size:14px;font-weight:500;color:#6d6d7c;letter-spacing:0}
+#mp-compact .activity-carousel{margin:0 0 7px;padding:0;background:transparent;border:0;box-shadow:none}
+#mp-compact .carousel-dots{display:flex;justify-content:center;align-items:center;gap:0;height:25px}
+#mp-compact .carousel-dots button{width:28px;height:25px;min-height:0;padding:0;background:transparent;border-radius:0;display:flex;align-items:center;justify-content:center}
+#mp-compact .carousel-dots button::after{content:'';width:5px;height:5px;border-radius:50%;background:#d8d4e6}
+#mp-compact .carousel-dots button[aria-pressed=true]::after{width:15px;border-radius:4px;background:#8c88c6}
+#mp-compact .reward{white-space:normal;line-height:1.4;min-height:22px;display:flex;align-items:center;justify-content:center;padding:4px 3px}
+#mp-compact .activity-carousel{position:relative;margin-bottom:11px}
+#mp-compact .activity-carousel #mp-stable-banner{height:86px;padding-bottom:23px!important}
+#mp-compact .carousel-dots{position:absolute;bottom:0;left:0;right:0;height:22px}
+#mp-compact .carousel-dots button{height:22px}
+#mp-compact .carousel-dots button::after{background:#ffffff9c}
+#mp-compact .carousel-dots button[aria-pressed=true]::after{background:#b88b59}
+#mp-compact .monthly-switch{margin-top:5px}
+#mp-compact #mp-home>.section>h3{font-size:17px;letter-spacing:.5px;padding-bottom:8px}
+#mp-compact .activity.pink{background:linear-gradient(#ffe0e6,#fff3f5);color:#a15d70}
+#mp-compact .activity.pink .reward{background:#e78b9e}
+#mp-compact .zone-name{display:block;white-space:nowrap}
+#mp-compact .zone-name>span{display:inline-block;margin-left:2px;color:inherit}
+#mp-compact .monthly-switch button{font-size:14px;padding:9px 5px}
+#mp-compact .monthly-simple{margin-top:10px;padding:12px;background:linear-gradient(#f2f3ff,#fff);border:1px solid #e8eaf5;border-radius:8px}
+#mp-compact .monthly-simple #monthly-thesis{font-size:12px;line-height:1.75;color:#696a7e;padding-bottom:10px}
+#mp-compact .monthly-simple .monthly-fund{background:#fff;border-top:1px solid #e7e9f5;border-radius:0;padding:11px 0 0}
+#mp-compact .allocation-intro{font-size:12px;color:#858599;margin:12px 0 8px}
+#mp-compact .allocation-asset{margin-top:9px;padding:12px;background:linear-gradient(#eff0fc,#fafaff);border-radius:8px;border:1px solid #e8eaf5}
+#mp-compact .allocation-label{font-size:14px;color:#606391;font-weight:500}
+#mp-compact .allocation-label>span{display:block;font-size:10px;color:#9295af;font-weight:400;margin-top:2px}
+#mp-compact .allocation-asset>p{font-size:11px;color:#737485;line-height:1.75;margin:7px 0 10px}
+#mp-compact .allocation-fund{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:#fff;color:#4d4d60;text-align:left;padding:10px;border-radius:6px;font-size:12px}
+#mp-compact .allocation-fund small{display:block;font-size:9px;color:#9ba3c2;margin-top:4px}
+#mp-compact .allocation-fund>span:last-child{white-space:nowrap;color:#8586b8;font-size:11px}
+#mp-compact .allocation-notes p{font-size:11px;color:#7f7f91}
+#mp-compact .monthly-switch{background:#f1f1f7;border-radius:9px;padding:3px;gap:3px}
+#mp-compact .monthly-switch button{border-radius:7px;box-shadow:none;padding:10px 5px}
+#mp-compact .monthly-switch button[aria-selected=true]{background:linear-gradient(110deg,#7e7cbb,#9798df);color:#fff;box-shadow:0 2px 6px #7a7bb52b}
+#mp-compact .allocation-asset{position:relative;overflow:hidden;background:linear-gradient(115deg,#eef1ff,#fafbff);border:1px solid #e2e7fa;box-shadow:0 3px 9px #707ab009;padding:14px 12px 11px}
+#mp-compact .allocation-label{font-size:17px;font-weight:600;color:#575d9a;position:relative;z-index:1;max-width:76%}
+#mp-compact .allocation-label>span{font-size:10px;color:#9095b2;margin-top:5px}
+#mp-compact .asset-art{position:absolute;right:6px;top:8px;width:74px;height:57px;opacity:.9}
+#mp-compact .asset-art img{width:100%;height:100%;object-fit:contain}
+#mp-compact .allocation-asset>p{border-top:1px solid #dce2f6;padding-top:9px;margin-top:13px;font-size:11px;color:#71768e}
+#mp-compact .allocation-fund{box-shadow:0 2px 5px #7885b00b;border:1px solid #e9edf9;padding:11px 9px;border-radius:7px}
+#mp-compact .allocation-fund>span:last-child{background:#edeffe;color:#747ac0;padding:5px 8px;border-radius:12px}
+#mp-compact .asset-dividend{background:linear-gradient(115deg,#fff1e5,#fffaf5);border-color:#f4e3d1}
+#mp-compact .asset-dividend .allocation-label{color:#a97443}
+#mp-compact .asset-dividend .allocation-label>span{color:#b5a28c}
+#mp-compact .asset-dividend>p{border-color:#eedfcf;color:#968573}
+#mp-compact .asset-dividend .allocation-fund{border-color:#f3e8dc}
+#mp-compact .asset-dividend .allocation-fund>span:last-child{background:#fff0dd;color:#b28b54}
+#mp-compact .asset-cloud{background:linear-gradient(115deg,#ebe9ff,#faf8ff);border-color:#e0dbfa}
+#mp-compact .asset-cloud .allocation-label{color:#7870b5}
+#mp-compact .asset-metal{background:linear-gradient(115deg,#eef4f8,#f9fcff);border-color:#dde8f0}
+#mp-compact .asset-metal .allocation-label{color:#61879d}
+#mp-compact .ranking-banner{display:flex;align-items:center;gap:10px;position:relative;width:100%;padding:11px 13px;margin-top:14px;text-align:left;border-radius:8px;background:linear-gradient(110deg,#e7def8,#e4edff);color:#646399;min-height:68px}
+#mp-compact .ranking-banner strong{display:block;font-size:14px;font-weight:500}
+#mp-compact .ranking-banner small{display:block;font-size:10px;color:#9999b5;margin-top:4px}
+#mp-compact .ranking-banner img{width:65px;height:43px;object-fit:contain;margin-left:auto}
+#mp-compact .ranking-arrow{font-size:20px;color:#8d86b5}
+#mp-compact .ranking-arrow{margin-left:auto}
+#mp-compact .allocation-label{max-width:none}
+#mp-compact .allocation-asset>p{margin-top:9px}

@@ -1,0 +1,179 @@
+/* Compact fund cards share one left alignment and keep the action centered. */
+.member-leaderboards {
+  margin: 0 12px 5px;
+  padding: 14px 0 0;
+  border-top: 1px solid var(--line);
+  background: transparent !important;
+}
+.member-leaderboards .board-tabs {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 42px;
+  margin: 0 0 4px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.member-leaderboards .board-tabs button {
+  position: relative;
+  flex: 0 1 auto;
+  height: 42px;
+  margin: 0;
+  padding: 0 2px;
+  border-radius: 0;
+  background: transparent;
+  color: #8b8795;
+  font-size: 15px;
+  line-height: 42px;
+  font-weight: 400;
+}
+.member-leaderboards .board-tabs button[aria-selected="true"] {
+  color: var(--accent-dark);
+  background: transparent;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: none;
+}
+.member-leaderboards .board-tabs button::after { display: none; }
+.member-leaderboards .board-tabs button[aria-selected="true"]::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 50%;
+  right: auto;
+  width: 24px;
+  transform: translateX(-50%);
+  bottom: 1px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--accent-dark);
+}
+.member-leaderboards .leaderboard { margin: 0; padding: 0; background: transparent; }
+.member-leaderboards .rank-row {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) 60px;
+  grid-template-rows: 22px 22px 26px;
+  gap: 0 6px;
+  align-items: center;
+  min-height: 90px;
+  margin: 0;
+  padding: 9px 8px;
+  border: 0;
+  border-bottom: 1px solid #ececf1;
+  border-radius: 0;
+  background: white;
+}
+.member-leaderboards .rank-row:last-child { margin-bottom: 0; border-bottom: 0; }
+.member-leaderboards .rank-medal {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  width: 22px;
+  height: 25px;
+  margin-top: 1px;
+  padding: 0;
+  border-radius: 6px;
+  clip-path: none;
+  font: 600 16px/25px Georgia, serif;
+  text-shadow: none;
+  background: linear-gradient(130deg, var(--rank-top), #fff) !important;
+}
+.member-leaderboards .rank-medal::before,
+.member-leaderboards .rank-medal::after { display: none; }
+.member-leaderboards .rank-product {
+  display: contents;
+}
+.member-leaderboards .rank-product strong {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  font-size: 15px;
+  line-height: 22px;
+  font-weight: 500;
+  color: #353441;
+}
+.member-leaderboards .rank-product p {
+  grid-column: 2;
+  grid-row: 2;
+  min-width: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 3px;
+  margin: 0;
+}
+.member-leaderboards .rank-product p span {
+  padding: 0 2px;
+  font-size: 12px;
+  line-height: 20px;
+  background: #f2f2f7;
+  color: #85828d;
+}
+.member-leaderboards .rank-product p span:first-child {
+  color: var(--accent-dark);
+  background: var(--soft);
+}
+.member-leaderboards .rank-detail {
+  min-height: 24px;
+  padding: 0;
+  font-size: 12px;
+  line-height: 24px;
+  color: #777380;
+}
+.member-leaderboards .rank-return {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: 0 5px;
+  grid-column: 2;
+  grid-row: 3;
+  align-self: center;
+  min-width: 0;
+  text-align: left;
+}
+.member-leaderboards .rank-return strong {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 600;
+  letter-spacing: -.5px;
+  font-variant-numeric: tabular-nums;
+}
+.member-leaderboards .rank-return small {
+  color: #96919b;
+  font-size: 12px;
+  line-height: 17px;
+}
+.member-leaderboards .rank-buy {
+  grid-column: 3;
+  grid-row: 1 / 4;
+  justify-self: end;
+  align-self: center;
+  width: 60px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  color: var(--accent-dark);
+  background: white;
+  font-size: 13px;
+  line-height: 30px;
+  box-shadow: none;
+}
+@media (max-width: 370px) {
+  .member-leaderboards { margin-right: 10px; margin-left: 10px; }
+  .member-leaderboards .rank-row {
+    grid-template-columns: 18px minmax(0, 1fr) 54px;
+    column-gap: 4px;
+    padding-right: 6px;
+    padding-left: 6px;
+  }
+  .member-leaderboards .rank-medal { width: 18px; }
+  .member-leaderboards .rank-product p { gap: 2px; }
+  .member-leaderboards .rank-product p span { padding: 0 2px; }
+  .member-leaderboards .rank-return { gap: 0 5px; }
+  .member-leaderboards .rank-return strong { font-size: 20px; }
+  .member-leaderboards .rank-buy { width: 54px; }
+}

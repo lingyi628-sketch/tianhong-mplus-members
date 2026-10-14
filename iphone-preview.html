@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iPhone 屏幕尺寸模拟 · 天弘基金 M+</title>
+  <style>
+    :root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; color: #262637; background: #f3f3f8; font-synthesis: none; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-size: 14px; }
+    button, select, a { -webkit-tap-highlight-color: transparent; }
+    button, select { font: inherit; }
+    button, a, select { touch-action: manipulation; }
+    button:focus-visible, select:focus-visible, a:focus-visible { outline: 3px solid #a4a4ec; outline-offset: 3px; }
+    .workspace { width: min(100%, 1640px); margin: 0 auto; padding: 28px 24px 36px; }
+    .intro { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 19px; }
+    .eyebrow { margin: 0 0 7px; color: #707083; font-size: 12px; letter-spacing: .04em; }
+    h1 { margin: 0; font-size: 24px; font-weight: 650; letter-spacing: -.03em; }
+    .open-page { flex-shrink: 0; color: #50528e; text-decoration: none; padding: 10px 0 10px 14px; font-size: 14px; }
+    .open-page span { display: inline-block; margin-left: 5px; }
+    .toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px 24px; padding: 14px 16px; background: #fff; border: 1px solid #e7e7ef; border-radius: 16px; box-shadow: 0 4px 16px #24244704; }
+    .control { display: flex; align-items: center; gap: 12px; }
+    .control-label { color: #777788; white-space: nowrap; }
+    .grades { display: flex; padding: 3px; gap: 2px; background: #f3f3f8; border-radius: 10px; }
+    .grades button { border: 0; background: transparent; color: #666676; min-width: 58px; padding: 9px 11px; border-radius: 7px; cursor: pointer; }
+    .grades button[aria-pressed="true"] { color: #fff; background: #6567a9; box-shadow: 0 2px 6px #3d3f7520; }
+    select { border: 1px solid #dfdfe9; border-radius: 9px; background: #fff; color: #373747; min-height: 39px; padding: 8px 32px 8px 11px; max-width: 100%; cursor: pointer; }
+    .preview-meta { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 7px 12px; margin: 22px 0 16px; color: #777788; font-size: 12px; }
+    .preview-meta strong { font-size: 13px; color: #555568; font-weight: 500; font-variant-numeric: tabular-nums; }
+    .preview-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: #b6b6c5; }
+    .stage { width: 100%; display: flex; justify-content: center; }
+    .device-space { position: relative; flex: 0 0 auto; }
+    .device { position: absolute; left: 0; top: 0; width: calc(var(--screen-width) + 24px); padding: 10px; border: 2px solid #5a5b61; border-radius: 54px; background: #111114; transform-origin: top left; box-shadow: 0 0 0 1px #17171b, 0 18px 35px #24243c20, inset 0 0 0 1px #45454d; }
+    .device::before, .device::after { content: ""; position: absolute; width: 3px; background: #5b5c65; border-radius: 2px; }
+    .device::before { left: -4px; top: 120px; height: 68px; box-shadow: 0 80px 0 #5b5c65; }
+    .device::after { right: -4px; top: 170px; height: 88px; }
+    .display { overflow: hidden; width: var(--screen-width); border-radius: 42px; background: #fff; }
+    .status-bar { height: 50px; display: flex; align-items: center; justify-content: space-between; padding: 6px 29px 0; color: #16161b; position: relative; user-select: none; }
+    .time { font-size: 14px; font-weight: 650; letter-spacing: -.02em; }
+    .island { position: absolute; top: 11px; left: 50%; transform: translateX(-50%); width: 96px; height: 26px; border-radius: 18px; background: #111114; }
+    .island::after { content: ""; position: absolute; right: 10px; top: 9px; height: 8px; width: 8px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #35415f, #172039 55%, #101016 75%); }
+    .status-icons { display: flex; align-items: center; gap: 5px; }
+    .status-icons svg { display: block; height: 14px; width: auto; }
+    iframe { display: block; border: 0; width: var(--screen-width); height: var(--screen-height); background: #f6f6fa; }
+    .home-area { height: 26px; display: flex; justify-content: center; align-items: center; background: #fff; }
+    .home-indicator { height: 5px; width: 120px; border-radius: 4px; background: #18181d; }
+    .device.classic .island { top: 8px; width: 55px; height: 5px; background: #25252a; }
+    .device.classic .island::after { display: none; }
+    .device.classic .status-bar { padding-top: 12px; }
+    .hint { text-align: center; color: #868695; font-size: 12px; line-height: 1.7; margin: 19px 0 0; }
+    .review-layout { display: grid; grid-template-columns: minmax(280px, 1fr) var(--device-column, 426px) minmax(220px, .65fr); align-items: start; gap: 24px; margin-top: 22px; }
+    .phone-column { min-width: 0; }
+    .phone-column .preview-meta { margin-top: 0; }
+    .review-panel { min-width: 0; background: #fff; border: 1px solid #e4e4ee; border-radius: 15px; overflow: hidden; position: sticky; top: 20px; box-shadow: 0 5px 20px #29294704; }
+    .review-panel > summary { display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; padding: 16px; font-size: 15px; font-weight: 600; list-style: none; border-bottom: 1px solid transparent; }
+    .review-panel > summary::-webkit-details-marker { display: none; }
+    .review-panel > summary::after { content: '+'; color: #9393a5; font-size: 18px; font-weight: 400; }
+    .review-panel[open] > summary { border-color: #eeeef4; }
+    .review-panel[open] > summary::after { content: '−'; }
+    .panel-subtitle { margin: 0; color: #858597; padding: 10px 14px; font-size: 12px; line-height: 1.6; }
+    .table-content { max-height: calc(100vh - 305px); overflow: auto; overscroll-behavior: contain; padding: 0 10px 10px; scrollbar-width: thin; }
+    .table-content table { border-collapse: separate; border-spacing: 0; width: max-content; min-width: 100%; font-size: 12px; line-height: 1.5; }
+    .table-content th, .table-content td { padding: 3px 8px; text-align: left; white-space: nowrap; border-bottom: 1px solid #eeeef4; }
+    .table-content thead { position: sticky; top: 0; z-index: 2; }
+    .table-content thead th { background: #f1f1f8; color: #52526d; font-weight: 600; }
+    .table-content tbody th { color: #5c5c71; font-weight: 500; }
+    .table-content tr > th:first-child:not([colspan]) { position: sticky; left: 0; z-index: 1; background: #fff; }
+    .table-content thead tr > th:first-child { background: #f1f1f8; }
+    .table-content td { color: #77778a; }
+    .table-content td.current-tier { background: #efeffb; color: #4d4f8a; }
+    .table-content .tier-category th { color: #626488; background: #f8f8fc; font-weight: 600; padding-top: 5px; padding-bottom: 5px; }
+    .table-content small { display: inline; font-size: 12px; color: #9a9aaa; margin-left: 6px; }
+    .table-content td[colspan] { text-align: left; }
+    .annotations-rail { position: relative; min-width: 0; align-self: stretch; }
+    .notes-content { position: absolute; left: 0; width: 100%; overflow: hidden; }
+    .annotation-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+    .annotation-lines path { fill: none; stroke: #c7c7d8; stroke-width: 1; }
+    .annotation-lines circle { fill: #a9a9c0; }
+    .notes-content a { position: absolute; left: 23px; right: 0; display: flex; gap: 9px; padding: 8px 0 0; color: inherit; text-decoration: none; border-top: 1px solid #d8d8e5; }
+    .notes-content a[hidden] { display: none; }
+    .notes-content a:hover strong, .notes-content a:focus-visible strong { color: #6567b0; }
+    .notes-content a > span { flex: 0 0 20px; padding-top: 2px; color: #9797ad; font-size: 11px; line-height: 20px; font-variant-numeric: tabular-nums; }
+    .notes-content strong { display: block; color: #52526c; font-size: 13px; line-height: 22px; font-weight: 600; }
+    .notes-content p { margin: 4px 0 0; font-size: 12px; line-height: 1.7; color: #858597; }
+    .notes-content a[data-continuing]::after { content: '↑'; position: absolute; left: -20px; top: 8px; color: #a9a9c0; font-size: 12px; }
+    .panel-loading { padding: 16px; color: #9292a3; font-size: 12px; }
+    @media (max-width: 1099px) {
+      .workspace { max-width: 900px; }
+      .review-layout { grid-template-columns: var(--device-column, 426px) minmax(210px, 1fr); gap: 18px 24px; overflow-x: auto; align-items: start; }
+      .phone-column { grid-column: 1; grid-row: 2; }
+      .comparison-panel { grid-column: 1 / 3; grid-row: 1; position: static; }
+      .annotations-rail { grid-column: 2; grid-row: 2; }
+      .table-content { max-height: 420px; }
+      .review-panel > summary { padding: 13px 16px; }
+    }
+    @media (max-width: 650px) {
+      .workspace { padding: 20px 14px 28px; }
+      h1 { font-size: 21px; }
+      .intro { gap: 8px; margin-bottom: 15px; }
+      .open-page { font-size: 12px; padding-left: 0; }
+      .toolbar { padding: 12px; gap: 12px; }
+      .control { justify-content: space-between; width: 100%; gap: 8px; }
+      .control-label { font-size: 12px; }
+      .grades { flex: 1; max-width: 330px; }
+      .grades button { flex: 1; min-width: 0; padding: 9px 8px; }
+      select { flex: 1; max-width: 330px; }
+      .preview-meta { margin-top: 18px; }
+    }
+    @media (prefers-reduced-motion: no-preference) { .grades button { transition: color .15s, background .15s; } }
+  </style>
+</head>
+<body>
+  <main class="workspace">
+    <header class="intro">
+      <div><p class="eyebrow">天弘基金 M+ 会员专区</p><h1>iPhone 屏幕尺寸模拟</h1></div>
+      <a id="open-page" class="open-page" href="index.html?grade=private&amp;v=18" target="_blank" rel="noopener">打开网页<span aria-hidden="true">↗</span></a>
+    </header>
+    <div class="toolbar" aria-label="预览设置">
+      <div class="control"><span class="control-label">会员等级</span><div class="grades" role="group" aria-label="会员等级"><button type="button" data-grade="mass" aria-pressed="false">大众</button><button type="button" data-grade="gold" aria-pressed="false">金卡</button><button type="button" data-grade="sunflower" aria-pressed="false">金葵花</button><button type="button" data-grade="private" aria-pressed="true">私行</button></div></div>
+      <div class="control"><label class="control-label" for="size">屏幕尺寸</label><select id="size"><option value="375x667">iPhone SE · 375 × 667</option><option value="375x812">iPhone mini · 375 × 812</option><option value="390x844" selected>iPhone 标准 · 390 × 844</option><option value="393x852">iPhone Pro · 393 × 852</option><option value="402x874">402 × 874</option><option value="414x896">iPhone 大屏 · 414 × 896</option><option value="430x932">iPhone Plus / Max · 430 × 932</option><option value="440x956">440 × 956</option></select></div>
+    </div>
+    <div class="review-layout" id="review-layout">
+      <details class="review-panel comparison-panel" id="comparison-panel" open>
+        <summary>会员分层一览</summary>
+        <p class="panel-subtitle">左右滑动查看四个等级，底色标记当前等级。</p>
+        <div class="table-content" id="table-content"><div class="panel-loading">正在载入分层内容…</div></div>
+      </details>
+      <div class="phone-column">
+    <div class="preview-meta" aria-live="polite"><strong id="viewport-label">页面区域 390 × 844</strong><span class="dot" aria-hidden="true"></span><span id="scale-label">100% 显示</span></div>
+    <div class="stage" id="stage">
+      <div class="device-space" id="device-space">
+        <div class="device" id="device" style="--screen-width:390px;--screen-height:844px">
+          <div class="display">
+            <div class="status-bar" aria-hidden="true"><span class="time">9:41</span><span class="island"></span><span class="status-icons"><svg viewBox="0 0 20 14"><path fill="currentColor" d="M1 10h3v4H1zM6 7h3v7H6zM11 4h3v10h-3zM16 1h3v13h-3z"/></svg><svg viewBox="0 0 18 14"><path d="M1 4.5a12 12 0 0 1 16 0M4 8a7.5 7.5 0 0 1 10 0M7.5 11.5a2 2 0 0 1 3 0" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><svg viewBox="0 0 29 14"><rect x="1" y="1.5" width="24" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".45"/><rect x="3.5" y="4" width="19" height="6" rx="1.5" fill="currentColor"/><path d="M27 5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".45"/></svg></span></div>
+            <iframe id="preview" title="天弘基金 M+ 手机页面，可在此滚动和操作"></iframe>
+            <div class="home-area" aria-hidden="true"><span class="home-indicator"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="hint">在手机内滚动和点击，即可体验页面。<br>按所选尺寸模拟页面区域；手机外框与状态栏仅供展示。</p>
+      </div>
+      <aside class="annotations-rail" id="annotations-rail" aria-label="随页面位置显示的批注">
+        <div class="notes-content" id="notes-content"></div>
+      </aside>
+    </div>
+  </main>
+  <script>
+    (() => {
+      const params = new URLSearchParams(location.search);
+      const gradeNames = ['mass', 'gold', 'sunflower', 'private'];
+      const gradeLabels = {mass:'大众',gold:'金卡',sunflower:'金葵花',private:'私行'};
+      let grade = gradeNames.includes(params.get('grade')) ? params.get('grade') : 'private';
+      const size = document.getElementById('size');
+      const frame = document.getElementById('preview');
+      const device = document.getElementById('device');
+      const space = document.getElementById('device-space');
+      const stage = document.getElementById('stage');
+      const openPage = document.getElementById('open-page');
+      if ([...size.options].some(option => option.value === params.get('size'))) size.value = params.get('size');
+      function saveSettings() {
+        const next = new URL(location.href);
+        next.searchParams.set('grade', grade);
+        next.searchParams.set('size', size.value);
+        history.replaceState(null, '', next);
+      }
+      function syncGrade() {
+        document.getElementById('annotations-rail').setAttribute('aria-label', `${gradeLabels[grade]}页面对应批注`);
+        document.querySelectorAll('[data-grade]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.grade === grade)));
+        openPage.href = `index.html?grade=${grade}&v=18`;
+        saveSettings();
+      }
+      function fitDevice() {
+        const [width, height] = size.value.split('x').map(Number);
+        document.getElementById('review-layout').style.setProperty('--device-column', `${width + 36}px`);
+        device.style.setProperty('--screen-width', `${width}px`);
+        device.style.setProperty('--screen-height', `${height}px`);
+        device.classList.toggle('classic', size.value === '375x667');
+        const scale = Math.min(1, Math.max(.1, (stage.clientWidth - 12) / (width + 24)));
+        device.style.transform = `scale(${scale})`;
+        space.style.width = `${(width + 24) * scale}px`;
+        space.style.height = `${(height + 100) * scale}px`;
+        document.getElementById('viewport-label').textContent = `页面区域 ${width} × ${height}`;
+        document.getElementById('scale-label').textContent = `${Math.round(scale * 100)}% 显示`;
+        scheduleNotePosition();
+      }
+      document.querySelectorAll('[data-grade]').forEach(button => button.addEventListener('click', () => {
+        if (grade === button.dataset.grade) return;
+        grade = button.dataset.grade;
+        syncGrade();
+        frame.src = openPage.href;
+      }));
+      size.addEventListener('change', () => { fitDevice(); saveSettings(); });
+      let panelObserver;
+      let layoutObserver;
+      let panelSync;
+      let notePositionFrame;
+      let observedFrameWindow;
+      const notesTarget = document.getElementById('notes-content');
+      const notesRail = document.getElementById('annotations-rail');
+      let notesMarkup = '';
+      function scheduleNotePosition() {
+        cancelAnimationFrame(notePositionFrame);
+        notePositionFrame = requestAnimationFrame(positionNotes);
+      }
+      function positionNotes() {
+        const doc = frame.contentDocument;
+        if (!doc || !frame.clientHeight) return;
+        const frameBox = frame.getBoundingClientRect();
+        const railBox = notesRail.getBoundingClientRect();
+        const scale = frameBox.height / frame.clientHeight;
+        const height = frameBox.height;
+        notesTarget.style.top = `${frameBox.top - railBox.top}px`;
+        notesTarget.style.height = `${height}px`;
+        const entries = [...notesTarget.querySelectorAll('[data-note-target]')].map(link => {
+          const target = doc.querySelector(link.dataset.noteTarget);
+          const box = target?.getBoundingClientRect();
+          return box && box.height > 0 ? {link, top: box.top * scale} : null;
+        }).filter(Boolean).sort((a, b) => a.top - b.top);
+        entries.forEach(entry => { entry.link.hidden = true; entry.link.removeAttribute('data-continuing'); });
+        // Only the current section and sections entering the phone viewport are shown.
+        // Each note retains a connector to its module, including when close anchors need space.
+        const visible = entries.filter((entry, index) => entry.top < height - 20 && (entries[index + 1]?.top ?? Infinity) > 32);
+        visible.forEach(entry => {
+          entry.link.hidden = false;
+          entry.height = entry.link.offsetHeight;
+          entry.anchor = Math.max(0, entry.top);
+          entry.y = entry.anchor;
+          if (entry.top < 0) entry.link.setAttribute('data-continuing', '');
+        });
+        // Fit notes without overlap; modules remain identified by their true anchor lines.
+        let previousBottom = -12;
+        visible.forEach(entry => { entry.y = Math.max(entry.y, previousBottom + 12); previousBottom = entry.y + entry.height; });
+        if (previousBottom > height) {
+          let nextTop = height + 12;
+          [...visible].reverse().forEach(entry => { entry.y = Math.min(entry.y, nextTop - 12 - entry.height); nextTop = entry.y; });
+        }
+        let previousEnd = -12;
+        visible.forEach(entry => { entry.y = Math.max(0, entry.y, previousEnd + 12); previousEnd = entry.y + entry.height; entry.link.style.top = `${entry.y}px`; });
+        let lines = notesTarget.querySelector('.annotation-lines');
+        if (!lines) {
+          lines = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+          lines.classList.add('annotation-lines');
+          lines.setAttribute('aria-hidden', 'true');
+          notesTarget.prepend(lines);
+        }
+        lines.setAttribute('viewBox', `0 0 ${notesTarget.clientWidth} ${height}`);
+        lines.innerHTML = visible.map(entry => {
+          const anchor = Math.min(height - 1, entry.anchor + 1);
+          const label = entry.y + 1;
+          return `<path d="M 0 ${anchor} H 8 L 18 ${label} H 23"/><circle cx="1" cy="${anchor}" r="1.5"/>`;
+        }).join('');
+      }
+      function cleanClone(node) {
+        const clone = node.cloneNode(true);
+        [clone, ...clone.querySelectorAll('*')].forEach(element => {
+          element.removeAttribute('style');
+          element.removeAttribute('id');
+        });
+        return clone;
+      }
+      function syncReviewPanels() {
+        const doc = frame.contentDocument;
+        if (!doc) return;
+        const sourceTable = doc.querySelector('.tier-table-section table');
+        const sourceNotes = doc.querySelector('.tier-annotations');
+        if (sourceTable) {
+          const table = cleanClone(sourceTable);
+          const target = document.getElementById('table-content');
+          const position = {left: target.scrollLeft, top: target.scrollTop};
+          if (target.innerHTML !== table.outerHTML) {
+            target.replaceChildren(table);
+            target.scrollTo(position.left, position.top);
+          }
+        }
+        if (sourceNotes) {
+          const links = [...sourceNotes.querySelectorAll('[data-note-target]')].map(cleanClone);
+          links.forEach(link => link.setAttribute('href', '#preview'));
+          const markup = links.map(link => link.outerHTML).join('');
+          if (notesMarkup !== markup) {
+            notesMarkup = markup;
+            notesTarget.replaceChildren(...links);
+          }
+        }
+        scheduleNotePosition();
+      }
+      function schedulePanelSync() {
+        cancelAnimationFrame(panelSync);
+        panelSync = requestAnimationFrame(syncReviewPanels);
+      }
+      notesTarget.addEventListener('click', event => {
+        const link = event.target.closest('[data-note-target]');
+        if (!link) return;
+        event.preventDefault();
+        const target = frame.contentDocument?.querySelector(link.dataset.noteTarget);
+        if (!target) return;
+        frame.contentWindow.scrollTo({top: target.getBoundingClientRect().top + frame.contentWindow.scrollY - 16, behavior: 'smooth'});
+        target.classList.add('annotation-highlight');
+        setTimeout(() => target.classList.remove('annotation-highlight'), 1600);
+      });
+      const narrowView = matchMedia('(max-width: 1099px)');
+      function adjustPanels() {
+        document.getElementById('comparison-panel').open = !narrowView.matches;
+        fitDevice();
+      }
+      narrowView.addEventListener('change', adjustPanels);
+      frame.addEventListener('load', () => {
+        try {
+          const innerGrade = new URL(frame.contentWindow.location.href).searchParams.get('grade');
+          if (gradeNames.includes(innerGrade) && grade !== innerGrade) { grade = innerGrade; syncGrade(); }
+          panelObserver?.disconnect();
+          layoutObserver?.disconnect();
+          observedFrameWindow?.removeEventListener('scroll', scheduleNotePosition);
+          observedFrameWindow?.removeEventListener('resize', scheduleNotePosition);
+          observedFrameWindow = frame.contentWindow;
+          observedFrameWindow.addEventListener('scroll', scheduleNotePosition, {passive: true});
+          observedFrameWindow.addEventListener('resize', scheduleNotePosition);
+          syncReviewPanels();
+          panelObserver = new MutationObserver(schedulePanelSync);
+          const doc = frame.contentDocument;
+          [doc.querySelector('.tier-table-section'), doc.querySelector('.tier-annotations')].filter(Boolean).forEach(source => panelObserver.observe(source, {subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['class']}));
+          layoutObserver = new ResizeObserver(scheduleNotePosition);
+          [doc.body, ...doc.querySelectorAll('.hero, .gifts, .activity-wrap, .zones, .products, #member-leaderboards, .member-content, .footer')].forEach(element => layoutObserver.observe(element));
+          doc.fonts.ready.then(scheduleNotePosition);
+        } catch (_) { /* The current site stays usable if a future link opens another origin. */ }
+      });
+      new ResizeObserver(fitDevice).observe(stage);
+      new ResizeObserver(scheduleNotePosition).observe(notesRail);
+      window.addEventListener('resize', scheduleNotePosition);
+      window.addEventListener('scroll', scheduleNotePosition, {passive: true});
+      document.fonts.ready.then(scheduleNotePosition);
+      syncGrade();
+      adjustPanels();
+      fitDevice();
+      frame.src = openPage.href;
+    })();
+  </script>
+</body>
+</html>
