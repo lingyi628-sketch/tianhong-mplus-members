@@ -8,49 +8,34 @@
 .member-leaderboards .board-tabs {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 4px;
   height: 42px;
-  margin: 0 0 4px;
-  padding: 0;
+  margin: 0 0 12px;
+  padding: 4px;
   border: 0;
-  border-radius: 0;
-  background: transparent;
+  border-radius: 10px;
+  background: var(--soft);
   box-shadow: none;
 }
 .member-leaderboards .board-tabs button {
-  position: relative;
-  flex: 0 1 auto;
-  height: 42px;
+  flex: 1;
+  height: 34px;
   margin: 0;
-  padding: 0 2px;
-  border-radius: 0;
-  background: transparent;
+  padding: 0 5px;
+  border-radius: 7px;
   color: #8b8795;
   font-size: 15px;
-  line-height: 42px;
+  line-height: 34px;
   font-weight: 400;
 }
 .member-leaderboards .board-tabs button[aria-selected="true"] {
   color: var(--accent-dark);
-  background: transparent;
+  background: white;
   font-size: 15px;
   font-weight: 600;
-  box-shadow: none;
+  box-shadow: 0 2px 5px #3e35540d;
 }
 .member-leaderboards .board-tabs button::after { display: none; }
-.member-leaderboards .board-tabs button[aria-selected="true"]::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 50%;
-  right: auto;
-  width: 24px;
-  transform: translateX(-50%);
-  bottom: 1px;
-  height: 2px;
-  border-radius: 1px;
-  background: var(--accent-dark);
-}
 .member-leaderboards .leaderboard { margin: 0; padding: 0; background: transparent; }
 .member-leaderboards .rank-row {
   display: grid;
@@ -59,14 +44,13 @@
   gap: 0 6px;
   align-items: center;
   min-height: 90px;
-  margin: 0;
+  margin: 0 0 8px;
   padding: 9px 8px;
-  border: 0;
-  border-bottom: 1px solid #ececf1;
-  border-radius: 0;
-  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: linear-gradient(115deg, #fff 45%, var(--soft));
 }
-.member-leaderboards .rank-row:last-child { margin-bottom: 0; border-bottom: 0; }
+.member-leaderboards .rank-row:last-child { margin-bottom: 0; }
 .member-leaderboards .rank-medal {
   grid-column: 1;
   grid-row: 1;
