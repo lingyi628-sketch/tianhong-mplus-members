@@ -45,7 +45,7 @@
  // The original artwork keeps its isolated styles, but shares the page's native
  // scroll surface. A second iframe can trap wheel/touch gestures in previews.
  async function mountReturnGuide(){
-  const response=await fetch('footer-reference.html?v=22&grade='+grade);
+  const response=await fetch('footer-reference.html?v=23&grade='+grade);
   if(!response.ok)throw new Error('Return guide unavailable');
   const source=new DOMParser().parseFromString(await response.text(),'text/html');
   const host=document.createElement('div');host.className='original-return-guide inline-return-guide';
@@ -63,14 +63,14 @@
   const fit=()=>{const scale=host.clientWidth/375;if(!scale)return;stage.style.transform='scale('+scale+')';guide.style.height=284*scale+'px';originalText.forEach(({el,size})=>{if(size>0)el.style.fontSize=Math.max(size,12/scale)+'px';});};
   fit();new ResizeObserver(fit).observe(host);document.fonts.ready.then(fit);
  }
- mountReturnGuide().catch(()=>{footer.innerHTML='<a class="footer-retry" href="footer-reference.html?v=22&grade='+grade+'">查看回访指引与完整风险提示 ›</a>';});
+ mountReturnGuide().catch(()=>{footer.innerHTML='<a class="footer-retry" href="footer-reference.html?v=23&grade='+grade+'">查看回访指引与完整风险提示 ›</a>';});
  const fitContent=()=>{const height=fresh.querySelector('img').getBoundingClientRect().height;home.style.setProperty('--content-banner-height',height+'px');};new ResizeObserver(fitContent).observe(fresh);fresh.querySelector('img').addEventListener('load',fitContent);fitContent();
  const shared=value=>[value,value,value,value];
  const fundLabel=code=>window.memberLiveFunds[code].name+'<small>'+code+'</small>';
  const rankRows=(key,label)=>window.memberBoardCodes[key].map((code,i)=>[label+' '+(i+1),'—','—',fundLabel(code),fundLabel(code)]);
  const groups=[
   ['页面配色',[['基础色','蓝色','浅金色','棕金色','紫色']]],
-  ['月享权益',[['基金体验金','1888元','2888元','8888元','18888元'],['现金红包','—','0.28元','0.58元','1.88元'],['每月专属大奖','—','—','—','188元<br>私行独享']]],
+  ['月享权益',[['基金体验金','1888元','2888元','8888元','18888元'],['现金红包','—','0.28元','0.58元','1.88元'],['每月专属大奖','—','—','—','188元<br>等级独享']]],
   ['活动加享 · Banner',[['活动',...shared('弘粉圈<br>来定投<br>指数拼图')],['专题',...shared('马龙稳健产品')]]],
   ['活动加享 · 专区',[['稳健专区',...shared('抽至高88元红包')],['红利专区',...shared('赢8888元体验金')],['AI专区',...shared('抽至高88元红包')]]],
   ['甄选产品',[['投稳健',...['017025','021042','015525','019894'].map(fundLabel)],['投红利',...shared('天弘中证央企红利50指数发起C<small>021562</small>')],['投AI',...shared('天弘中证沪港深云计算ETF联接C<small>019170</small>')],...rankRows('sip','定投人气榜'),...rankRows('new','新客心选榜')]],
@@ -78,9 +78,9 @@
   ['回访指引',[['查找入口',...shared('搜索「天弘基金」<br>进入天弘基金招财号')],['搜索提示',...shared('上招商银行App搜「天弘基金」')]]]
  ];
  const rowMarkup=row=>{row=row.map(value=>value.replace(/<br>/g,' ／ '));let cells='<th scope="row">'+row[0]+'</th>';for(let i=1;i<row.length;){let span=1;while(row[i]!=='—'&&i+span<row.length&&row[i+span]===row[i])span++;cells+='<td colspan="'+span+'" class="'+(level+1>=i&&level+1<i+span?'current-tier':'')+'">'+row[i]+'</td>';i+=span;}return '<tr>'+cells+'</tr>';};
- const table=document.createElement('section');table.className='section tier-table-section';table.id='tier-comparison';table.innerHTML='<h2>会员分层一览</h2><div class="tier-table-scroll"><table class="tier-table"><thead><tr><th>内容</th><th>大众</th><th>金卡</th><th>金葵花</th><th>私行</th></tr></thead><tbody>'+groups.map(([name,rows])=>'<tr class="tier-category"><th colspan="5">'+name+'</th></tr>'+rows.map(rowMarkup).join('')).join('')+'</tbody></table></div>';document.body.append(table);
+ const table=document.createElement('section');table.className='section tier-table-section';table.id='tier-comparison';table.innerHTML='<h2>会员分层一览</h2><div class="tier-table-scroll"><table class="tier-table"><thead><tr><th>内容</th><th>大众</th><th>金卡</th><th>金葵花</th><th>金葵花 M3-私人银行</th></tr></thead><tbody>'+groups.map(([name,rows])=>'<tr class="tier-category"><th colspan="5">'+name+'</th></tr>'+rows.map(rowMarkup).join('')).join('')+'</tbody></table></div>';document.body.append(table);
  const expandTable=document.createElement('button');expandTable.type='button';expandTable.className='table-expand';expandTable.textContent='展开';expandTable.setAttribute('aria-expanded','false');table.querySelector('h2').append(expandTable);expandTable.addEventListener('click',()=>{const expanded=table.classList.toggle('table-expanded');expandTable.textContent=expanded?'收起':'展开';expandTable.setAttribute('aria-expanded',String(expanded));});
- const notes=[['页面配色',({mass:'大众采用蓝色',gold:'金卡采用浅金色',sunflower:'金葵花采用棕金色',private:'私行采用紫色'})[grade]+'，头卡、模块标题渐变与胶囊 Tab 使用统一的等级强调色，头卡下方展示本等级专属权益说明。','.hero'],['月享权益',({mass:'1888元体验金，无现金红包。',gold:'2888元体验金＋0.28元红包。',sunflower:'8888元体验金＋0.58元红包。',private:'18888元体验金＋1.88元红包；每月188元大奖为私行独享，三项权益采用相同排版，仅大奖增加“私行独享”气泡标识。'})[grade]+'月享礼集中展示，弱化重复按钮。','.gifts'],['内容优先级',({mass:'只展示资讯，省去单一分类栏。',gold:'视频优先，另有资讯。',sunflower:'播客优先，另有视频、资讯。',private:'直播优先，另有播客、视频、资讯。'})[grade]+'内容卡片不加底色，统一高度；资讯展示两张半，可横滑。','.member-content']];
+ const notes=[['页面配色',({mass:'大众采用蓝色',gold:'金卡采用浅金色',sunflower:'金葵花采用棕金色',private:'私行采用紫色'})[grade]+'，头卡、模块标题渐变与胶囊 Tab 使用统一的等级强调色，头卡下方展示本等级专属权益说明。','.hero'],['月享权益',({mass:'1888元体验金，无现金红包。',gold:'2888元体验金＋0.28元红包。',sunflower:'8888元体验金＋0.58元红包。',private:'18888元体验金＋1.88元红包；每月188元大奖为等级独享，三项权益采用相同排版，仅大奖增加“等级独享”气泡标识。'})[grade]+'月享礼集中展示，弱化重复按钮。','.gifts'],['内容优先级',({mass:'只展示资讯，省去单一分类栏。',gold:'视频优先，另有资讯。',sunflower:'播客优先，另有视频、资讯。',private:'直播优先，另有播客、视频、资讯。'})[grade]+'内容卡片不加底色，统一高度；资讯展示两张半，可横滑。','.member-content']];
  if(level>=2)notes.push(['客户榜单','仅金葵花和私行展示两榜，各3只基金，按指定顺序排列。榜单卡片不加底色；买一笔居中，收益与基金名称左对齐。','#member-leaderboards']);
  notes.push(['活动加享','四档共用原版轮播。活动规划：弘粉圈、来定投、指数拼图；专题：马龙稳健产品。未配链接时提示“待补充跳转链接”。','.activity-wrap']);
  notes.push(['专区卡片','四档共用，首屏两张半，可横滑。稳健、AI抽至高88元红包；红利赢8888元体验金。','.zones']);
