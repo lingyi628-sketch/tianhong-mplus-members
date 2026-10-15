@@ -26,4 +26,4 @@ GitHub Pages 使用 `main` 分支根目录，`.nojekyll` 禁用 Jekyll。提交�
 
 ## 本次更新
 
-v24：根据红利专区代码包的 evidence-stable.png、evidence-income.png、evidence-central.png 核实产品增信图规格为1026×441px；更正全部占位标注、对角线坐标与版位比例。
+v25：四档会员头卡下的权益说明右侧新增同配色“去关注”按钮，点击展示招商银行 App 内关注天弘基金招财号的指引。保留 v24 已核实的1026×441px产品图占位规格。

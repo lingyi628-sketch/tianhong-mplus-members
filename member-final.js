@@ -63,6 +63,7 @@
     if(b.hasAttribute('data-detail')){const p=window.memberProducts[b.dataset.detail];show(p.name,'<p>'+p.code+'</p><p>'+p.slogan+'</p><p>'+p.description+'</p><p>完整产品解读及交易信息需以最新基金法律文件和销售页面为准。</p>');}
     if(b.hasAttribute('data-board'))show(b.dataset.board==='sip'?'定投人气榜':'新客心选榜','<p>按'+(b.dataset.board==='sip'?'定投人数':'新客买入人数')+'从高到低排序。当前三行是产品样式预览，不代表真实榜序。真实排名和人数尚未接入，统计周期、范围和去重规则待确认。</p>');
     if(b.hasAttribute('data-search'))show('回访会员专区','<p>打开招商银行 App，搜索「天弘基金」，进入招财号，点击「宠粉福利专栏」。</p>');
+    if(b.hasAttribute('data-follow'))show('关注天弘基金招财号','<p>打开招商银行 App，搜索「天弘基金」，进入招财号后点击「关注」。</p>');
     if(b.hasAttribute('data-award'))entry();
   });
   dialog.addEventListener('close',()=>{if(location.hash==='#monthly-188')history.replaceState(null,'',location.pathname+location.search);});

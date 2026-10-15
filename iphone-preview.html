@@ -113,7 +113,7 @@
   <main class="workspace">
     <header class="intro">
       <div><p class="eyebrow">天弘基金 M+ 会员专区</p><h1>iPhone 屏幕尺寸模拟</h1></div>
-      <a id="open-page" class="open-page" href="index.html?grade=private&amp;v=24" target="_blank" rel="noopener">打开网页<span aria-hidden="true">↗</span></a>
+      <a id="open-page" class="open-page" href="index.html?grade=private&amp;v=25" target="_blank" rel="noopener">打开网页<span aria-hidden="true">↗</span></a>
     </header>
     <div class="toolbar" aria-label="预览设置">
       <div class="control"><span class="control-label">会员等级</span><div class="grades" role="group" aria-label="会员等级"><button type="button" data-grade="mass" aria-pressed="false">大众</button><button type="button" data-grade="gold" aria-pressed="false">金卡</button><button type="button" data-grade="sunflower" aria-pressed="false">金葵花</button><button type="button" data-grade="private" aria-pressed="true">私行</button></div></div>
@@ -167,7 +167,7 @@
       function syncGrade() {
         document.getElementById('annotations-rail').setAttribute('aria-label', `${gradeLabels[grade]}页面对应批注`);
         document.querySelectorAll('[data-grade]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.grade === grade)));
-        openPage.href = `index.html?grade=${grade}&v=24`;
+        openPage.href = `index.html?grade=${grade}&v=25`;
         saveSettings();
       }
       function fitDevice() {

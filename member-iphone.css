@@ -133,7 +133,9 @@ body{font-size:15px}
 #member-content-groups .content-tile{height:88px!important;min-height:88px!important}
 
 /* Restore the tier-specific entitlement line below the header artwork. */
-.member-entitlement-summary{margin:12px 0 0;font-size:14px;font-weight:600;line-height:22px;color:#c7c4ed;overflow-wrap:break-word}
-body[data-grade=mass] .member-entitlement-summary{color:#333}
-body[data-grade=gold] .member-entitlement-summary{color:#333}
-body[data-grade=sunflower] .member-entitlement-summary{color:#d3aa65}
+.member-entitlement-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px;color:#c7c4ed}
+.member-entitlement-summary{flex:1;min-width:0;margin:0;font-size:14px;font-weight:600;line-height:22px;overflow-wrap:break-word}
+.member-follow{flex:none;min-height:28px;padding:2px 10px;border:1px solid currentColor;border-radius:15px;background:transparent;color:inherit;font-size:12px;line-height:20px;white-space:nowrap}
+body[data-grade=mass] .member-entitlement-row,body[data-grade=gold] .member-entitlement-row{color:#333}
+body[data-grade=mass] .member-follow,body[data-grade=gold] .member-follow{color:var(--accent-dark)}
+body[data-grade=sunflower] .member-entitlement-row{color:#d3aa65}
