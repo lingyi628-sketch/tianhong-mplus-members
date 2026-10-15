@@ -131,3 +131,9 @@ body{font-size:15px}
 #member-content-groups .content-deck,
 #member-content-groups .content-tiles,
 #member-content-groups .content-tile{height:88px!important;min-height:88px!important}
+
+/* Restore the tier-specific entitlement line below the header artwork. */
+.member-entitlement-summary{margin:12px 0 0;font-size:14px;font-weight:600;line-height:22px;color:#c7c4ed;overflow-wrap:break-word}
+body[data-grade=mass] .member-entitlement-summary{color:#333}
+body[data-grade=gold] .member-entitlement-summary{color:#333}
+body[data-grade=sunflower] .member-entitlement-summary{color:#d3aa65}
