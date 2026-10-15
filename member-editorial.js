@@ -45,7 +45,7 @@
  // The original artwork keeps its isolated styles, but shares the page's native
  // scroll surface. A second iframe can trap wheel/touch gestures in previews.
  async function mountReturnGuide(){
-  const response=await fetch('footer-reference.html?v=25&grade='+grade);
+  const response=await fetch('footer-reference.html?v=26&grade='+grade);
   if(!response.ok)throw new Error('Return guide unavailable');
   const source=new DOMParser().parseFromString(await response.text(),'text/html');
   const host=document.createElement('div');host.className='original-return-guide inline-return-guide';
@@ -63,7 +63,7 @@
   const fit=()=>{const scale=host.clientWidth/375;if(!scale)return;stage.style.transform='scale('+scale+')';guide.style.height=284*scale+'px';originalText.forEach(({el,size})=>{if(size>0)el.style.fontSize=Math.max(size,12/scale)+'px';});};
   fit();new ResizeObserver(fit).observe(host);document.fonts.ready.then(fit);
  }
- mountReturnGuide().catch(()=>{footer.innerHTML='<a class="footer-retry" href="footer-reference.html?v=25&grade='+grade+'">查看回访指引与完整风险提示 ›</a>';});
+ mountReturnGuide().catch(()=>{footer.innerHTML='<a class="footer-retry" href="footer-reference.html?v=26&grade='+grade+'">查看回访指引与完整风险提示 ›</a>';});
  const fitContent=()=>{const height=fresh.querySelector('img').getBoundingClientRect().height;home.style.setProperty('--content-banner-height',height+'px');};new ResizeObserver(fitContent).observe(fresh);fresh.querySelector('img').addEventListener('load',fitContent);fitContent();
  const shared=value=>[value,value,value,value];
  const fundLabel=code=>window.memberLiveFunds[code].name+'<small>'+code+'</small>';

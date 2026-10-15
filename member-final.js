@@ -6,7 +6,7 @@
   document.querySelector('#member-entitlement-summary').textContent=({mass:'大众会员专属权益，升级可解锁更多',gold:'金卡会员专属权益，升级可解锁更多',sunflower:'金葵花会员专属权益，升级可解锁更多',private:'金葵花 M3-私人银行会员专属权益'})[grade];
   document.querySelector('#member-grade-name').textContent=member.name;
   document.querySelectorAll('.member-preview a').forEach(a=>{if(a.getAttribute('href')==='?grade='+grade)a.setAttribute('aria-current','page');});
-  document.querySelector('.hero').innerHTML='<img class="figma-header-logo" src="assets/header-logo-'+grade+'.png" alt="天弘基金"><p class="figma-header-subtitle">粉丝福利</p><small class="figma-header-caption">关注招财号有礼</small>';fetch('member-themes.json').then(r=>r.json()).then(themes=>document.querySelector('.hero').style.backgroundImage='url("'+themes[grade]+'")');
+  document.querySelector('.hero').innerHTML='<img class="figma-header-logo" src="assets/header-logo-'+grade+'.png" alt="天弘基金"><p class="figma-header-subtitle">粉丝福利</p><div class="hero-follow-row"><small class="figma-header-caption">关注招财号有礼</small><button type="button" class="member-follow" data-follow>去关注</button></div>';fetch('member-themes.json').then(r=>r.json()).then(themes=>document.querySelector('.hero').style.backgroundImage='url("'+themes[grade]+'")');
   const dialog=document.querySelector('dialog');
   const show=(title,body)=>{dialog.querySelector('h2').textContent=title;dialog.querySelector('#dialog-body').innerHTML=body;dialog.showModal();};
   const toast=document.createElement('div');toast.className='site-toast';toast.setAttribute('role','status');document.body.append(toast);let toastTimer;
