@@ -6,7 +6,7 @@ body[data-grade="private"] #member-gifts .award-gift {
   grid-template-rows: 18px 18px 27px 26px;
   gap: 2px;
   align-content: center;
-  border: 1px solid #cbc6e3;
+  border: 0;
   border-radius: 9px;
   background: linear-gradient(160deg, #fff, #eeebf8);
   box-shadow: none;

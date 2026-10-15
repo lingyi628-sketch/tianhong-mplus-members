@@ -31,7 +31,12 @@ body{font-size:15px}
 .products>.figma-tabs button,.products>.figma-tabs button[aria-selected=true]{font-size:16px}
 .product-description strong{font-size:17px;line-height:1.5}
 .product-description p{font-size:14px;line-height:1.65;color:#7b7b88}
-.product-panels .evidence-chart{aspect-ratio:auto;min-height:214px;height:214px;grid-template-rows:18px minmax(0,1fr) 18px;padding:7px 4px!important;gap:3px}
+.product-panels .evidence-chart.image-placeholder{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:750/480;height:auto;min-height:0;padding:0!important;border:1px solid #d8d8df!important;background:transparent!important;overflow:hidden}
+.product-panels .image-placeholder>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.image-placeholder>svg line{stroke:#d8d8df;stroke-width:1}
+.image-placeholder-spec{position:relative;display:flex;flex-direction:column;gap:5px;padding:10px 14px;background:#fff;text-align:center;color:#8a8993}
+.image-placeholder-spec strong{font-size:14px;line-height:22px;font-weight:500}
+.image-placeholder-spec span{font-size:12px;line-height:18px}
 .chart-heading,.chart-heading span{font-size:12px;line-height:18px}
 .chart-legend,.chart-legend span{font-size:12px;line-height:18px;color:#777}
 .evidence-chart svg text{font-size:12px}
@@ -92,14 +97,14 @@ body{font-size:15px}
 #member-content-groups .content-picker button[aria-selected=true]{color:white;background:linear-gradient(110deg,var(--accent),var(--accent-dark))}
 #member-content-groups .content-picker button:after{display:none}
 #member-content-groups .static-picker span{padding:5px 20px;border-radius:18px;background:var(--soft);color:var(--accent-dark);font-size:15px;line-height:24px}
-.media-tiles .content-tile{position:relative;display:grid;grid-template-columns:46px minmax(0,1fr) 52px;gap:10px;padding:10px 12px!important;border:1px solid var(--line);border-radius:12px;background:linear-gradient(112deg,var(--soft),#fff)!important;overflow:hidden}
+.media-tiles .content-tile{position:relative;display:grid;grid-template-columns:46px minmax(0,1fr) 52px;gap:10px;padding:10px 12px!important;border:1px solid var(--line);border-radius:12px;background:transparent!important;overflow:hidden}
 .media-tiles .lesson-art{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #ffffffb0;border-radius:14px;background:#ffffffb0;box-shadow:0 4px 10px #4f538510;color:var(--accent-dark)}
 .media-tiles .lesson-art svg{width:28px;height:28px}
 .media-copy{display:flex;flex-direction:column;gap:3px;min-width:0;text-align:left}
 .media-tiles .media-copy strong{font-size:18px;line-height:25px;letter-spacing:.5px;color:var(--accent-dark)}
 .media-copy small{font-size:12px;line-height:17px;color:#7c7a8c;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .media-tiles .lesson-action{font-size:14px;line-height:29px;border:1px solid var(--line);border-radius:18px;background:white;color:var(--accent-dark);padding:0 10px}
-.education-tiles .content-tile{border-radius:10px;border:1px solid var(--line);background:linear-gradient(150deg,var(--soft),#fff);gap:5px}
+.education-tiles .content-tile{border-radius:10px;border:1px solid var(--line);background:transparent;gap:5px}
 .education-tiles .lesson-art{color:var(--accent-dark)}
 .original-banners,.original-banner,.original-banner img{border-radius:10px}
 .original-banners{clip-path:inset(0 round 10px)}

@@ -45,7 +45,7 @@
  // The original artwork keeps its isolated styles, but shares the page's native
  // scroll surface. A second iframe can trap wheel/touch gestures in previews.
  async function mountReturnGuide(){
-  const response=await fetch('footer-reference.html?v=19&grade='+grade);
+  const response=await fetch('footer-reference.html?v=20&grade='+grade);
   if(!response.ok)throw new Error('Return guide unavailable');
   const source=new DOMParser().parseFromString(await response.text(),'text/html');
   const host=document.createElement('div');host.className='original-return-guide inline-return-guide';
@@ -63,7 +63,7 @@
   const fit=()=>{const scale=host.clientWidth/375;if(!scale)return;stage.style.transform='scale('+scale+')';guide.style.height=284*scale+'px';originalText.forEach(({el,size})=>{if(size>0)el.style.fontSize=Math.max(size,12/scale)+'px';});};
   fit();new ResizeObserver(fit).observe(host);document.fonts.ready.then(fit);
  }
- mountReturnGuide().catch(()=>{footer.innerHTML='<a class="footer-retry" href="footer-reference.html?v=19&grade='+grade+'">查看回访指引与完整风险提示 ›</a>';});
+ mountReturnGuide().catch(()=>{footer.innerHTML='<a class="footer-retry" href="footer-reference.html?v=20&grade='+grade+'">查看回访指引与完整风险提示 ›</a>';});
  const fitContent=()=>{const height=fresh.querySelector('img').getBoundingClientRect().height;home.style.setProperty('--content-banner-height',height+'px');};new ResizeObserver(fitContent).observe(fresh);fresh.querySelector('img').addEventListener('load',fitContent);fitContent();
  const shared=value=>[value,value,value,value];
  const fundLabel=code=>window.memberLiveFunds[code].name+'<small>'+code+'</small>';
@@ -80,12 +80,12 @@
  const rowMarkup=row=>{row=row.map(value=>value.replace(/<br>/g,' ／ '));let cells='<th scope="row">'+row[0]+'</th>';for(let i=1;i<row.length;){let span=1;while(row[i]!=='—'&&i+span<row.length&&row[i+span]===row[i])span++;cells+='<td colspan="'+span+'" class="'+(level+1>=i&&level+1<i+span?'current-tier':'')+'">'+row[i]+'</td>';i+=span;}return '<tr>'+cells+'</tr>';};
  const table=document.createElement('section');table.className='section tier-table-section';table.id='tier-comparison';table.innerHTML='<h2>会员分层一览</h2><div class="tier-table-scroll"><table class="tier-table"><thead><tr><th>内容</th><th>大众</th><th>金卡</th><th>金葵花</th><th>私行</th></tr></thead><tbody>'+groups.map(([name,rows])=>'<tr class="tier-category"><th colspan="5">'+name+'</th></tr>'+rows.map(rowMarkup).join('')).join('')+'</tbody></table></div>';document.body.append(table);
  const expandTable=document.createElement('button');expandTable.type='button';expandTable.className='table-expand';expandTable.textContent='展开';expandTable.setAttribute('aria-expanded','false');table.querySelector('h2').append(expandTable);expandTable.addEventListener('click',()=>{const expanded=table.classList.toggle('table-expanded');expandTable.textContent=expanded?'收起':'展开';expandTable.setAttribute('aria-expanded',String(expanded));});
- const notes=[['页面配色',({mass:'大众采用蓝色',gold:'金卡采用浅金色',sunflower:'金葵花采用棕金色',private:'私行采用紫色'})[grade]+'，头卡、模块标题渐变与胶囊 Tab 使用统一的等级强调色。','.hero'],['月享权益',({mass:'1888元体验金，无现金红包。',gold:'2888元体验金＋0.28元红包。',sunflower:'8888元体验金＋0.58元红包。',private:'18888元体验金＋1.88元红包；每月188元大奖为私行独享，采用浅紫描边与专属按钮。'})[grade]+'月享礼集中展示，弱化重复按钮。','.gifts'],['内容优先级',({mass:'只展示文章，省去单一分类栏。',gold:'视频优先，另有文章。',sunflower:'播客优先，另有视频、文章。',private:'直播优先，另有播客、视频、文章。'})[grade]+'内容卡片统一高度；文章展示两张半，可横滑。','.member-content']];
- if(level>=2)notes.push(['客户榜单','仅金葵花和私行展示两榜，各3只基金，按指定顺序排列。买一笔居中，收益与基金名称左对齐。','#member-leaderboards']);
+ const notes=[['页面配色',({mass:'大众采用蓝色',gold:'金卡采用浅金色',sunflower:'金葵花采用棕金色',private:'私行采用紫色'})[grade]+'，头卡、模块标题渐变与胶囊 Tab 使用统一的等级强调色。','.hero'],['月享权益',({mass:'1888元体验金，无现金红包。',gold:'2888元体验金＋0.28元红包。',sunflower:'8888元体验金＋0.58元红包。',private:'18888元体验金＋1.88元红包；每月188元大奖为私行独享，以浅紫底色与专属按钮区分，不加独立边框。'})[grade]+'月享礼集中展示，弱化重复按钮。','.gifts'],['内容优先级',({mass:'只展示文章，省去单一分类栏。',gold:'视频优先，另有文章。',sunflower:'播客优先，另有视频、文章。',private:'直播优先，另有播客、视频、文章。'})[grade]+'内容卡片不加底色，统一高度；文章展示两张半，可横滑。','.member-content']];
+ if(level>=2)notes.push(['客户榜单','仅金葵花和私行展示两榜，各3只基金，按指定顺序排列。榜单卡片不加底色；买一笔居中，收益与基金名称左对齐。','#member-leaderboards']);
  notes.push(['活动加享','四档共用原版轮播。活动规划：弘粉圈、来定投、指数拼图；专题：马龙稳健产品。未配链接时提示“待补充跳转链接”。','.activity-wrap']);
  notes.push(['专区卡片','四档共用，首屏两张半，可横滑。稳健、AI抽至高88元红包；红利赢8888元体验金。','.zones']);
  notes.push(['回访指引','四档共用原Figma回访指引和搜索入口；标题与搜索条随等级配色；同页滚动可查看完整风险提示。','.footer']);
- notes.push(['产品选品','投稳健按等级展示：大众通享、金卡弘利、金葵花多元增利、私行通利。投红利、投AI四档共用。','.products']);
+ notes.push(['产品选品','投稳健按等级展示：大众通享、金卡弘利、金葵花多元增利、私行通利。投红利、投AI四档共用。图片统一占位：宽750×高480px，JPG/PNG。','.products']);
  const aside=document.createElement('aside');aside.className='tier-annotations';aside.innerHTML='<h2>本等级差异批注</h2>'+notes.map(([title,text,target],i)=>'<a href="#" data-note-target="'+target+'"><span>'+String(i+1).padStart(2,'0')+'</span><div><strong>'+title+'</strong><p>'+text+'</p></div></a>').join('');document.body.append(aside);
  const refreshNotes=()=>{let previous=0;const homeBox=home.getBoundingClientRect();aside.style.left=(homeBox.right+18)+'px';aside.style.top=(homeBox.top+scrollY)+'px';aside.style.height=home.scrollHeight+'px';aside.style.width=Math.max(95,Math.min(175,innerWidth-homeBox.right-26))+'px';const ordered=[...aside.querySelectorAll('[data-note-target]')].sort((a,b)=>document.querySelector(a.dataset.noteTarget).getBoundingClientRect().top-document.querySelector(b.dataset.noteTarget).getBoundingClientRect().top);ordered.forEach((a,i)=>{aside.append(a);a.firstElementChild.textContent=String(i+1).padStart(2,'0');});ordered.forEach(a=>{const target=document.querySelector(a.dataset.noteTarget);const desired=target.getBoundingClientRect().top-homeBox.top;const top=Math.max(desired,previous);a.style.top=top+'px';previous=top+a.offsetHeight+12;});};
  new ResizeObserver(refreshNotes).observe(home);window.addEventListener('resize',refreshNotes);document.fonts.ready.then(refreshNotes);setTimeout(refreshNotes,100);
