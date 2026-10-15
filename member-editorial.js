@@ -45,7 +45,7 @@
  // The original artwork keeps its isolated styles, but shares the page's native
  // scroll surface. A second iframe can trap wheel/touch gestures in previews.
  async function mountReturnGuide(){
-  const response=await fetch('footer-reference.html?v=23&grade='+grade);
+  const response=await fetch('footer-reference.html?v=24&grade='+grade);
   if(!response.ok)throw new Error('Return guide unavailable');
   const source=new DOMParser().parseFromString(await response.text(),'text/html');
   const host=document.createElement('div');host.className='original-return-guide inline-return-guide';
@@ -63,7 +63,7 @@
   const fit=()=>{const scale=host.clientWidth/375;if(!scale)return;stage.style.transform='scale('+scale+')';guide.style.height=284*scale+'px';originalText.forEach(({el,size})=>{if(size>0)el.style.fontSize=Math.max(size,12/scale)+'px';});};
   fit();new ResizeObserver(fit).observe(host);document.fonts.ready.then(fit);
  }
- mountReturnGuide().catch(()=>{footer.innerHTML='<a class="footer-retry" href="footer-reference.html?v=23&grade='+grade+'">查看回访指引与完整风险提示 ›</a>';});
+ mountReturnGuide().catch(()=>{footer.innerHTML='<a class="footer-retry" href="footer-reference.html?v=24&grade='+grade+'">查看回访指引与完整风险提示 ›</a>';});
  const fitContent=()=>{const height=fresh.querySelector('img').getBoundingClientRect().height;home.style.setProperty('--content-banner-height',height+'px');};new ResizeObserver(fitContent).observe(fresh);fresh.querySelector('img').addEventListener('load',fitContent);fitContent();
  const shared=value=>[value,value,value,value];
  const fundLabel=code=>window.memberLiveFunds[code].name+'<small>'+code+'</small>';
@@ -85,7 +85,7 @@
  notes.push(['活动加享','四档共用原版轮播。活动规划：弘粉圈、来定投、指数拼图；专题：马龙稳健产品。未配链接时提示“待补充跳转链接”。','.activity-wrap']);
  notes.push(['专区卡片','四档共用，首屏两张半，可横滑。稳健、AI抽至高88元红包；红利赢8888元体验金。','.zones']);
  notes.push(['回访指引','四档共用原Figma回访指引和搜索入口；标题与搜索条随等级配色；同页滚动可查看完整风险提示。','.footer']);
- notes.push(['产品选品','投稳健按等级展示：大众通享、金卡弘利、金葵花多元增利、私行通利。投红利、投AI四档共用。图片统一占位：宽750×高480px，JPG/PNG。','.products']);
+ notes.push(['产品选品','投稳健按等级展示：大众通享、金卡弘利、金葵花多元增利、私行通利。投红利、投AI四档共用。图片统一占位：宽1026×高441px，JPG/PNG。','.products']);
  const aside=document.createElement('aside');aside.className='tier-annotations';aside.innerHTML='<h2>本等级差异批注</h2>'+notes.map(([title,text,target],i)=>'<a href="#" data-note-target="'+target+'"><span>'+String(i+1).padStart(2,'0')+'</span><div><strong>'+title+'</strong><p>'+text+'</p></div></a>').join('');document.body.append(aside);
  const refreshNotes=()=>{let previous=0;const homeBox=home.getBoundingClientRect();aside.style.left=(homeBox.right+18)+'px';aside.style.top=(homeBox.top+scrollY)+'px';aside.style.height=home.scrollHeight+'px';aside.style.width=Math.max(95,Math.min(175,innerWidth-homeBox.right-26))+'px';const ordered=[...aside.querySelectorAll('[data-note-target]')].sort((a,b)=>document.querySelector(a.dataset.noteTarget).getBoundingClientRect().top-document.querySelector(b.dataset.noteTarget).getBoundingClientRect().top);ordered.forEach((a,i)=>{aside.append(a);a.firstElementChild.textContent=String(i+1).padStart(2,'0');});ordered.forEach(a=>{const target=document.querySelector(a.dataset.noteTarget);const desired=target.getBoundingClientRect().top-homeBox.top;const top=Math.max(desired,previous);a.style.top=top+'px';previous=top+a.offsetHeight+12;});};
  new ResizeObserver(refreshNotes).observe(home);window.addEventListener('resize',refreshNotes);document.fonts.ready.then(refreshNotes);setTimeout(refreshNotes,100);

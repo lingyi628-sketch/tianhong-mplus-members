@@ -26,4 +26,4 @@ GitHub Pages 使用 `main` 分支根目录，`.nojekyll` 禁用 Jekyll。提交�
 
 ## 本次更新
 
-v23：四档头部权益说明移除数量“X项”；分层表最高等级改为“金葵花 M3-私人银行”；大奖气泡、分层表及批注统一使用“等级独享”。
+v24：根据红利专区代码包的 evidence-stable.png、evidence-income.png、evidence-central.png 核实产品增信图规格为1026×441px；更正全部占位标注、对角线坐标与版位比例。

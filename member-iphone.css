@@ -31,7 +31,7 @@ body{font-size:15px}
 .products>.figma-tabs button,.products>.figma-tabs button[aria-selected=true]{font-size:16px}
 .product-description strong{font-size:17px;line-height:1.5}
 .product-description p{font-size:14px;line-height:1.65;color:#7b7b88}
-.product-panels .evidence-chart.image-placeholder{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:750/480;height:auto;min-height:0;padding:0!important;border:1px solid #d8d8df!important;background:transparent!important;overflow:hidden}
+.product-panels .evidence-chart.image-placeholder{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:1026/441;height:auto;min-height:0;padding:0!important;border:1px solid #d8d8df!important;background:transparent!important;overflow:hidden}
 .product-panels .image-placeholder>svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .image-placeholder>svg line{stroke:#d8d8df;stroke-width:1}
 .image-placeholder-spec{position:relative;display:flex;flex-direction:column;gap:5px;padding:10px 14px;background:#fff;text-align:center;color:#8a8993}
