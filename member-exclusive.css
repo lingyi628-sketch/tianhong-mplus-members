@@ -1,85 +1,15 @@
-/* Private-bank award: four in-flow lines, with a quiet purple distinction. */
-body[data-grade="private"] #member-gifts .award-gift {
-  isolation: isolate;
-  height: 112px;
-  padding: 5px 3px;
-  grid-template-rows: 18px 18px 27px 26px;
-  gap: 2px;
-  align-content: center;
-  border: 0;
-  border-radius: 9px;
-  background: linear-gradient(160deg, #fff, #eeebf8);
-  box-shadow: none;
-  color: #51476e;
-}
-
-body[data-grade="private"] #member-gifts .award-gift .gift-exclusive-badge {
-  position: static;
-  grid-row: 1;
-  padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: none;
-  color: #71618f;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 18px;
-  letter-spacing: 0;
-  box-shadow: none;
-}
-
-body[data-grade="private"] #member-gifts .award-gift .gift-title {
-  grid-row: 2;
-  color: #51476e;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 18px;
-}
-
-body[data-grade="private"] #member-gifts .award-gift .gift-amount {
-  grid-row: 3;
-  margin: 0;
-  line-height: 27px;
-}
-
-body[data-grade="private"] #member-gifts .award-gift .gift-amount strong {
-  color: #51476e;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 27px;
-}
-
-body[data-grade="private"] #member-gifts .award-gift .gift-art {
-  display: none;
-}
-
-body[data-grade="private"] #member-gifts .award-gift button {
-  grid-row: 4;
-  align-self: center;
-  padding: 0 10px;
-  border: 0;
-  background: #675789;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 500;
-  box-shadow: none;
-}
-
-body[data-grade="private"] .award-gift button:focus-visible {
-  outline: 2px solid #51476e;
-  outline-offset: 2px;
-}
-
-/* Present monthly gifts as one group, with one clear exclusive accent. */
+/* All monthly gifts share one layout; private exclusivity is a small bubble. */
 #member-gifts:not(.mass-gifts){padding:8px 5px 5px;gap:5px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(135deg,var(--soft),#fff)}
 #member-gifts:not(.mass-gifts) .gift{height:112px;padding:2px;grid-template-rows:20px 20px 36px 26px;gap:1px}
-#member-gifts .gift:not(.award-gift){border:0;background:transparent;box-shadow:none}
-#member-gifts .gift:not(.award-gift) button{background:transparent;color:var(--accent-dark);box-shadow:none;padding:0 5px;font-size:12px;font-weight:500}
-#member-gifts .gift:not(.award-gift) button:after{content:' ›';margin-left:3px}
-#member-gifts:not(.mass-gifts) .gift:not(.award-gift)+.gift:not(.award-gift){border-left:1px solid var(--line);border-radius:0}
+#member-gifts .gift{border:0;background:transparent;box-shadow:none}
+#member-gifts .gift button{background:transparent;color:var(--accent-dark);box-shadow:none;padding:0 5px;font-size:12px;font-weight:500}
+#member-gifts .gift button:after{content:' ›';margin-left:3px}
+#member-gifts:not(.mass-gifts) .gift+.gift{border-left:1px solid var(--line);border-radius:0}
 #member-gifts.mass-gifts{border:1px solid var(--line);border-radius:12px;background:linear-gradient(135deg,var(--soft),#fff)}
-#member-gifts .award-gift .gift-title{font-size:12px}
+body[data-grade="private"] #member-gifts{padding-top:24px}
+body[data-grade="private"] #member-gifts .gift-exclusive-badge{position:absolute;z-index:1;left:50%;right:auto;top:-21px;transform:translateX(-50%);padding:0 8px;border:0;border-radius:9px;background:var(--accent-dark);color:#fff;font-size:11px;font-weight:500;line-height:18px;letter-spacing:0;white-space:nowrap;box-shadow:none}
+body[data-grade="private"] #member-gifts .gift-exclusive-badge:after{content:'';position:absolute;left:50%;bottom:-3px;transform:translateX(-50%);border-left:3px solid transparent;border-right:3px solid transparent;border-top:3px solid var(--accent-dark)}
+body[data-grade="private"] .award-gift button:focus-visible{outline:2px solid var(--accent-dark);outline-offset:2px}
 .activity-wrap .banner-arrow{background:transparent;box-shadow:none;color:#a2abc2;width:21px}
 @media(max-width:370px){#member-gifts:not(.mass-gifts){padding-left:2px;padding-right:2px;gap:2px}}
-
 #member-gifts:not(.mass-gifts) .gift button{height:26px!important;line-height:26px}
